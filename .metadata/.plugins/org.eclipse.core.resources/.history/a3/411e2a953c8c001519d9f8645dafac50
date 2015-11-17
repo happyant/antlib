@@ -1,0 +1,8 @@
+main.d main.o: ../main.c ../server.h ../net_protocol.h \
+ ../server_script_lua.h
+
+../server.h:
+
+../net_protocol.h:
+
+../server_script_lua.h:

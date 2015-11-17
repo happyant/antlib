@@ -1,0 +1,25 @@
+dblib.d dblib.o: ../dblib.c ../dblib.h ../db_header.h \
+ ../../commandlib/alloc.h ../../commandlib/sys_header.h \
+ ../../commandlib/my_string.h ../../commandlib/double_list.h \
+ ../../commandlib/sys_header.h ../../commandlib/atomic_lock.h \
+ ../../commandlib/my_time.h ../db_factory.h
+
+../dblib.h:
+
+../db_header.h:
+
+../../commandlib/alloc.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/my_string.h:
+
+../../commandlib/double_list.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/atomic_lock.h:
+
+../../commandlib/my_time.h:
+
+../db_factory.h:

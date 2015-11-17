@@ -1,0 +1,15 @@
+
+**** Build of configuration Debug for project loglib ****
+
+make all 
+Building file: ../loglib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"loglib.d" -MT"loglib.d" -o"loglib.o" "../loglib.c"
+Finished building: ../loglib.c
+ 
+Building target: libloglib.a
+Invoking: GCC Archiver
+ar -r "libloglib.a"  ./loglib.o   
+ar: creating libloglib.a
+Finished building target: libloglib.a
+ 

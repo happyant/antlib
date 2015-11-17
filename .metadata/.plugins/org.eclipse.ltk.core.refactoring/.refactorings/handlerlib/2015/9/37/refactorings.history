@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;handlerlib/loglib.h&apos; to &apos;loger.h&apos;" description="Rename resource &apos;loglib.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="loglib.h" name="loger.h" stamp="1441978627890" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;handlerlib/loglib.c&apos; to &apos;loger.c&apos;" description="Rename resource &apos;loglib.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="loglib.c" name="loger.c" stamp="1441978640377" updateReferences="true"/>
+</session>

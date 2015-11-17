@@ -1,0 +1,119 @@
+/*
+ * net_protocol.c
+ *
+ *  Created on: Oct 31, 2015
+ *      Author: zhaolixiang
+ */
+
+#include "net_protocol.h"
+#include "protocollib/tcp_msglist.h"
+#include "protocollib/http_protocol.h"
+#include "protocollib/protocollib.h"
+#include "tcplib/tcplib.h"
+#include "commandlib/md5.h"
+#include "server_db.h"
+#include "user_list.h"
+
+void _netmsg_userlogin_back(handler_msg* msg,uint64_t userid,uint64_t netid,int result)
+{
+	int n;
+	time_t t;
+	char key[33];
+	tcp_stream* info = (tcp_stream*)msg->_data;
+	if(result == 0)
+	{
+		t = get_systime();
+		MYMD5_ENCRYPT2((uint8_t*)&userid,sizeof(uint64_t),(uint8_t*)&t,sizeof(time_t),key);
+		n = sprintf(info->_buf,"{\"id\":%lu,\"result\":%d,\"key\":\"%s\",\"time\":%lu}",userid,result,key,(uint64_t)t);
+	}
+	else
+	{
+		n = sprintf(info->_buf,"{\"id\":0,\"result\":%d,\"key\":\"null\",\"time\":0}",result);
+	}
+	msg->_datalen = n;
+	msg->_data = info->_buf;
+	msg->_msgid = 0;
+	tcp_sendmsg(netid,msg);
+}
+
+void netmsg_userlogin(handler_msg* msg,uint64_t userid,uint64_t netid)
+{
+	tcp_stream* info = (tcp_stream*)msg->_data;
+	static const char* keys[2] = {"user","password"};
+	char* vl[2] = {0,0};
+	if(-1 == parse_http_values(info->_buf+info->_off,msg->_datalen,keys,vl,2))
+	{
+		close_tcpconnection(netid,"http login message parser error");
+		return;
+	}
+	if(vl[0] == 0 || vl[1] == 0)
+	{
+		close_tcpconnection(netid,"http login message is not full");
+		return;
+	}
+	mydb* db = get_mydb(0);
+	ASSERT(db);
+	char sql[256];
+	int n = snprintf(sql,sizeof(sql),"select pswd,state,id from user where name='%s'",vl[0]);
+	if(n >= 256 || n <= 0)
+	{
+		close_tcpconnection(netid,"http login message is not full");
+	}
+	mydb_recordset* rset = get_recordset(db,sql,n);
+	if(NULL == rset || rset->_row_num <= 0)
+	{
+		//user is not exist
+		_netmsg_userlogin_back(msg,0,netid,2);
+		return;
+	}
+	char* dbpswd = get_recordset_value(db,rset,0);
+	char pswd[33];
+	MYMD5_ENCRYPT2((uint8_t*)vl[0],strlen(vl[0]),(uint8_t*)vl[1],strlen(vl[1]),pswd);
+	if(0 != strcmp(dbpswd,pswd))
+	{
+		//password error
+		_netmsg_userlogin_back(msg,0,netid,1);
+		return ;
+	}
+	userid = (uint64_t)(atoll(get_recordset_value(db,rset,2)));
+	//login successful
+	_netmsg_userlogin_back(msg,userid,netid,0);
+}
+
+
+
+void do_user_netmsg(handler_msg* msg,uint64_t userid,uint64_t netid)
+{
+	tcp_stream* s = (tcp_stream*)msg->_data;
+	if(parse_stringmsg(s) == -1)
+	{
+		return;
+	}
+	pushmsg_byname(s->_vl->_vl[0],msg);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void init_netprotocol()
+{
+	// http://url/user/login?name=admin&password=123456&type=1
+	struct pm_tcpmsg_field login[3] = {{"name",0,3,32},{"password",0,6,32},{"type",1,1,3}};
+	tcpmsg_regist_string("user","login",USERMSG_LOGIN,login,3,do_user_netmsg);
+
+	// http://url/user/check?name=admin
+	struct pm_tcpmsg_field check[1] = {{"name",0,3,32}};
+	tcpmsg_regist_string("user","check",USERMSG_CHECK,check,1,do_user_netmsg);
+
+	//http://url/user/add?name=admin&password&email=aa@shenyv.com&telphone=12345678901&cards=44a&realname=xiaoming
+	struct pm_tcpmsg_field add[6] = {{"name",0,3,32},{"password",0,6,32},{"email",0,0,64},
+			{"telphone",0,0,16},{"cards",0,0,32},{"realname",0,0,64}};
+	tcpmsg_regist_string("user","add",USERMSG_ADD,add,6,do_user_netmsg);
+
+	// http://url/user/password?name=admin&password=old&newpassword=new
+	struct pm_tcpmsg_field password[3] = {{"name",0,3,32},{"password",0,6,32},{"newpassword",0,6,32}};
+	tcpmsg_regist_string("user","password",USERMSG_UPDATEPASSWORD,password,3,do_user_netmsg);
+
+	// http://url/user/update?email=&telphone=&cards=&realname=
+	struct pm_tcpmsg_field update[4] = {{"email",0,6,64},{"telphone",0,7,16},{"cards",0,16,32},{"realname",0,1,64}};
+	tcpmsg_regist_string("user","update",USERMSG_UPDATE,update,4,do_user_netmsg);
+}

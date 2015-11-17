@@ -1,0 +1,107 @@
+/*
+ * http_protocol.h
+ *
+ *  Created on: Sep 18, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef HTTP_PROTOCOL_H_
+#define HTTP_PROTOCOL_H_
+
+#include "tcp_protocol_header.h"
+
+void init_http_path_words();
+int check_http_path_word(char c);
+
+
+//////////////////////////////////////////////////////////
+
+static inline int set_http_request_get(char* buf,int len,char* path,char* host,char* values)
+{
+	const char* request_str = "GET /%s?%s HTTP/1.1\r\nHost: %s\r\n\r\n";
+	int n = snprintf(buf,len,request_str,path,values,host);
+	ASSERT(n > 0 && n < len);
+	return n;
+}
+
+struct http_
+int parse_http_request_get(char* buf,int len);
+
+//result:-1 error, 0 not all path, > 0 the path end offset
+static inline int get_http_request_get_path(char* buf,int len,char** path)
+{
+	if(len < 5){return 0;}
+	int i = 4;
+	while(++i < len)
+	{
+		if(buf[i] == '?') {
+			*path = buf+5;
+			buf[i] = 0;
+			return i+1;
+		}
+		if(check_http_path_word(buf[i]) == 0) {
+			return -1;
+		}
+	}
+	return 0;
+}
+
+static inline int get_http_request_get_values(char* buf,int len,char** vl)
+{
+	int i = 0;
+	while(i < len)
+	{
+		if(buf[i] == ' ') {
+			if(i + 10 >= len)	//HTTP/1.1\r\n  10
+				return 0;
+			if(buf[i+10] != '\n')
+				return -1;
+			*vl =  buf;
+			buf[i] = 0;
+			return i+11;
+		}
+		++i;
+	}
+	return 0;
+}
+static inline int get_http_request_get_end(char* buf,int len,int* is_end)
+{
+	int i = 0;
+	while(i < len)
+	{
+
+		++i;
+	}
+}
+
+//////////////////////////////////////////////////////////
+
+static inline int create_http_request_post(char* buf,int len,char* path,char* host,char* values,int values_len)
+{
+	if(values_len == -1){
+		values_len = strlen(values);
+	}else{
+		ASSERT(strlen(values) == values_len);
+	}
+	const char* request_str = "POST %s HTTP/1.1\r\nContent-Length: %d\r\nHost: %s\r\n\r\n%s";
+	int n = snprintf(buf,len,request_str,path,values_len,host,values);
+	ASSERT(n > 0 && n < len);
+	return n;
+}
+
+//////////////////////////////////////////////////////////
+#define HTTP_RESULT_OK  "200 OK"
+#define HTTP_RESULT_ERROR "404 Not Found"
+
+static inline int create_http_response(char* buf,int len,const char* result,char* server,char* values,int values_len)
+{
+	const char* responce_str = "HTTP/1.1 %s\r\nContent-Length: %d\r\nServer: %s\r\n\r\n";
+	int n = snprintf(buf,len,responce_str,result,values_len,server);
+	ASSERT(n > 0 && n < len);
+	ASSERT(n+values_len < len);
+	memcpy(buf+n,values,values_len);
+	return n+values_len;
+}
+
+
+#endif /* HTTP_PROTOCOL_H_ */

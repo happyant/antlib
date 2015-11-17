@@ -1,0 +1,67 @@
+server.d server.o: ../server.c ../server.h ../net_protocol.h \
+ ../server_config.h ../server_db.h ../../dblib/dblib.h \
+ ../../dblib/db_header.h ../../commandlib/alloc.h \
+ ../../commandlib/sys_header.h ../../commandlib/double_list.h \
+ ../../commandlib/sys_header.h ../../commandlib/atomic_lock.h \
+ ../../commandlib/my_time.h ../server_master.h \
+ ../../handlerlib/handlerlib.h ../../handlerlib/handler_msg.h \
+ ../../commandlib/command_header.h ../../commandlib/double_list.h \
+ ../../commandlib/alloc.h ../../commandlib/locker.h \
+ ../../commandlib/atomic_lock.h ../../commandlib/my_time.h \
+ ../../handlerlib/timer.h ../../handlerlib/loger.h ../../tcplib/tcplib.h \
+ ../../tcplib/tcp_header.h ../../handlerlib/handler_msg.h \
+ ../../protocollib/protocollib.h
+
+../server.h:
+
+../net_protocol.h:
+
+../server_config.h:
+
+../server_db.h:
+
+../../dblib/dblib.h:
+
+../../dblib/db_header.h:
+
+../../commandlib/alloc.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/double_list.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/atomic_lock.h:
+
+../../commandlib/my_time.h:
+
+../server_master.h:
+
+../../handlerlib/handlerlib.h:
+
+../../handlerlib/handler_msg.h:
+
+../../commandlib/command_header.h:
+
+../../commandlib/double_list.h:
+
+../../commandlib/alloc.h:
+
+../../commandlib/locker.h:
+
+../../commandlib/atomic_lock.h:
+
+../../commandlib/my_time.h:
+
+../../handlerlib/timer.h:
+
+../../handlerlib/loger.h:
+
+../../tcplib/tcplib.h:
+
+../../tcplib/tcp_header.h:
+
+../../handlerlib/handler_msg.h:
+
+../../protocollib/protocollib.h:

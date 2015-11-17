@@ -1,0 +1,39 @@
+/*
+ * tcplib.h
+ *
+ *  Created on: 2014-10-1
+ *      Author: happy_ant
+ * Email: zhaolixiang99@163.com
+ */
+
+#ifndef TCPLIB_H_
+#define TCPLIB_H_
+
+#include "tcp_header.h"
+
+#define TCPHANDLER_MAX 256
+#define TCPSERVER_MAX  3
+
+
+void init_tcplib(int handler_groupid,int handler_count);
+void uninit_tcplib();
+
+int create_listen_list();
+/*
+ * @return: 0 is success,
+ * @ip: ipv4,NULL is 127.0.0.1
+ * @port: must be >0
+ * @protocol: 0 is tcp4,1 is tcp12,2 is http,3 is flash
+ * */
+int listen_tcpport(int listid,const char* ip,int port,int protocol);
+
+void bind_listen_list(int listid,int server_count);
+
+int cennect_server(uint32_t ip,int port,int protocol);
+
+
+int send_netmsg(handler_msg* msg);
+
+
+
+#endif /* TCPLIB_H_ */

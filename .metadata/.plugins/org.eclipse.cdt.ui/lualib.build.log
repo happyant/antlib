@@ -1,0 +1,170 @@
+
+**** Build of configuration Debug for project lualib ****
+
+make all 
+Building file: ../lapi.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lapi.d" -MT"lapi.d" -o"lapi.o" "../lapi.c"
+Finished building: ../lapi.c
+ 
+Building file: ../lauxlib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lauxlib.d" -MT"lauxlib.d" -o"lauxlib.o" "../lauxlib.c"
+Finished building: ../lauxlib.c
+ 
+Building file: ../lbaselib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lbaselib.d" -MT"lbaselib.d" -o"lbaselib.o" "../lbaselib.c"
+Finished building: ../lbaselib.c
+ 
+Building file: ../lbitlib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lbitlib.d" -MT"lbitlib.d" -o"lbitlib.o" "../lbitlib.c"
+Finished building: ../lbitlib.c
+ 
+Building file: ../lcode.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lcode.d" -MT"lcode.d" -o"lcode.o" "../lcode.c"
+Finished building: ../lcode.c
+ 
+Building file: ../lcorolib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lcorolib.d" -MT"lcorolib.d" -o"lcorolib.o" "../lcorolib.c"
+Finished building: ../lcorolib.c
+ 
+Building file: ../lctype.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lctype.d" -MT"lctype.d" -o"lctype.o" "../lctype.c"
+Finished building: ../lctype.c
+ 
+Building file: ../ldblib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ldblib.d" -MT"ldblib.d" -o"ldblib.o" "../ldblib.c"
+Finished building: ../ldblib.c
+ 
+Building file: ../ldebug.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ldebug.d" -MT"ldebug.d" -o"ldebug.o" "../ldebug.c"
+Finished building: ../ldebug.c
+ 
+Building file: ../ldo.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ldo.d" -MT"ldo.d" -o"ldo.o" "../ldo.c"
+Finished building: ../ldo.c
+ 
+Building file: ../ldump.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ldump.d" -MT"ldump.d" -o"ldump.o" "../ldump.c"
+Finished building: ../ldump.c
+ 
+Building file: ../lfunc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lfunc.d" -MT"lfunc.d" -o"lfunc.o" "../lfunc.c"
+Finished building: ../lfunc.c
+ 
+Building file: ../lgc.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lgc.d" -MT"lgc.d" -o"lgc.o" "../lgc.c"
+Finished building: ../lgc.c
+ 
+Building file: ../linit.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"linit.d" -MT"linit.d" -o"linit.o" "../linit.c"
+Finished building: ../linit.c
+ 
+Building file: ../liolib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"liolib.d" -MT"liolib.d" -o"liolib.o" "../liolib.c"
+Finished building: ../liolib.c
+ 
+Building file: ../llex.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"llex.d" -MT"llex.d" -o"llex.o" "../llex.c"
+Finished building: ../llex.c
+ 
+Building file: ../lmathlib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lmathlib.d" -MT"lmathlib.d" -o"lmathlib.o" "../lmathlib.c"
+Finished building: ../lmathlib.c
+ 
+Building file: ../lmem.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lmem.d" -MT"lmem.d" -o"lmem.o" "../lmem.c"
+Finished building: ../lmem.c
+ 
+Building file: ../loadlib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"loadlib.d" -MT"loadlib.d" -o"loadlib.o" "../loadlib.c"
+Finished building: ../loadlib.c
+ 
+Building file: ../lobject.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lobject.d" -MT"lobject.d" -o"lobject.o" "../lobject.c"
+Finished building: ../lobject.c
+ 
+Building file: ../lopcodes.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lopcodes.d" -MT"lopcodes.d" -o"lopcodes.o" "../lopcodes.c"
+Finished building: ../lopcodes.c
+ 
+Building file: ../loslib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"loslib.d" -MT"loslib.d" -o"loslib.o" "../loslib.c"
+Finished building: ../loslib.c
+ 
+Building file: ../lparser.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lparser.d" -MT"lparser.d" -o"lparser.o" "../lparser.c"
+Finished building: ../lparser.c
+ 
+Building file: ../lstate.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lstate.d" -MT"lstate.d" -o"lstate.o" "../lstate.c"
+Finished building: ../lstate.c
+ 
+Building file: ../lstring.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lstring.d" -MT"lstring.d" -o"lstring.o" "../lstring.c"
+Finished building: ../lstring.c
+ 
+Building file: ../lstrlib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lstrlib.d" -MT"lstrlib.d" -o"lstrlib.o" "../lstrlib.c"
+Finished building: ../lstrlib.c
+ 
+Building file: ../ltable.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ltable.d" -MT"ltable.d" -o"ltable.o" "../ltable.c"
+Finished building: ../ltable.c
+ 
+Building file: ../ltablib.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ltablib.d" -MT"ltablib.d" -o"ltablib.o" "../ltablib.c"
+Finished building: ../ltablib.c
+ 
+Building file: ../ltm.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ltm.d" -MT"ltm.d" -o"ltm.o" "../ltm.c"
+Finished building: ../ltm.c
+ 
+Building file: ../lundump.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lundump.d" -MT"lundump.d" -o"lundump.o" "../lundump.c"
+Finished building: ../lundump.c
+ 
+Building file: ../lvm.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lvm.d" -MT"lvm.d" -o"lvm.o" "../lvm.c"
+Finished building: ../lvm.c
+ 
+Building file: ../lzio.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"lzio.d" -MT"lzio.d" -o"lzio.o" "../lzio.c"
+Finished building: ../lzio.c
+ 
+Building target: liblualib.a
+Invoking: GCC Archiver
+ar -r "liblualib.a"  ./lapi.o ./lauxlib.o ./lbaselib.o ./lbitlib.o ./lcode.o ./lcorolib.o ./lctype.o ./ldblib.o ./ldebug.o ./ldo.o ./ldump.o ./lfunc.o ./lgc.o ./linit.o ./liolib.o ./llex.o ./lmathlib.o ./lmem.o ./loadlib.o ./lobject.o ./lopcodes.o ./loslib.o ./lparser.o ./lstate.o ./lstring.o ./lstrlib.o ./ltable.o ./ltablib.o ./ltm.o ./lundump.o ./lvm.o ./lzio.o   
+ar: creating liblualib.a
+Finished building target: liblualib.a
+ 

@@ -1,0 +1,40 @@
+
+**** Build of configuration Debug for project tcplib ****
+
+make all 
+Building file: ../tcp_connection.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_connection.d" -MT"tcp_connection.d" -o"tcp_connection.o" "../tcp_connection.c"
+Finished building: ../tcp_connection.c
+ 
+Building file: ../tcp_connection_list.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_connection_list.d" -MT"tcp_connection_list.d" -o"tcp_connection_list.o" "../tcp_connection_list.c"
+Finished building: ../tcp_connection_list.c
+ 
+Building file: ../tcp_epoll.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_epoll.d" -MT"tcp_epoll.d" -o"tcp_epoll.o" "../tcp_epoll.c"
+Finished building: ../tcp_epoll.c
+ 
+Building file: ../tcp_listener.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_listener.d" -MT"tcp_listener.d" -o"tcp_listener.o" "../tcp_listener.c"
+Finished building: ../tcp_listener.c
+ 
+Building file: ../tcp_listener_list.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_listener_list.d" -MT"tcp_listener_list.d" -o"tcp_listener_list.o" "../tcp_listener_list.c"
+Finished building: ../tcp_listener_list.c
+ 
+Building file: ../tcplib.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcplib.d" -MT"tcplib.d" -o"tcplib.o" "../tcplib.c"
+Finished building: ../tcplib.c
+ 
+Building target: libtcplib.a
+Invoking: GCC Archiver
+ar -r "libtcplib.a"  ./tcp_connection.o ./tcp_connection_list.o ./tcp_epoll.o ./tcp_listener.o ./tcp_listener_list.o ./tcplib.o   
+ar: creating libtcplib.a
+Finished building target: libtcplib.a
+ 

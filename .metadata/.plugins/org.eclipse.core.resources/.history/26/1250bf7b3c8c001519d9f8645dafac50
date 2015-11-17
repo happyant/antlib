@@ -1,0 +1,10 @@
+encry_book.d encry_book.o: ../encry_book.c ../encry_book.h \
+ ../sys_header.h ../alloc.h ../my_string.h
+
+../encry_book.h:
+
+../sys_header.h:
+
+../alloc.h:
+
+../my_string.h:

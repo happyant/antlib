@@ -1,0 +1,50 @@
+
+**** Build of configuration Debug for project commandlib ****
+
+make all 
+Building file: ../alloc.c
+Invoking: GCC C Compiler
+gcc -D_DEBUG_ALLOC -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"alloc.d" -MT"alloc.d" -o"alloc.o" "../alloc.c"
+Finished building: ../alloc.c
+ 
+Building file: ../encry_book.c
+Invoking: GCC C Compiler
+gcc -D_DEBUG_ALLOC -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"encry_book.d" -MT"encry_book.d" -o"encry_book.o" "../encry_book.c"
+Finished building: ../encry_book.c
+ 
+Building file: ../hash.c
+Invoking: GCC C Compiler
+gcc -D_DEBUG_ALLOC -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"hash.d" -MT"hash.d" -o"hash.o" "../hash.c"
+Finished building: ../hash.c
+ 
+Building file: ../ini_reader.c
+Invoking: GCC C Compiler
+gcc -D_DEBUG_ALLOC -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"ini_reader.d" -MT"ini_reader.d" -o"ini_reader.o" "../ini_reader.c"
+Finished building: ../ini_reader.c
+ 
+Building file: ../md5.c
+Invoking: GCC C Compiler
+gcc -D_DEBUG_ALLOC -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"md5.d" -MT"md5.d" -o"md5.o" "../md5.c"
+Finished building: ../md5.c
+ 
+Building file: ../my_time.c
+Invoking: GCC C Compiler
+gcc -D_DEBUG_ALLOC -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"my_time.d" -MT"my_time.d" -o"my_time.o" "../my_time.c"
+Finished building: ../my_time.c
+ 
+Building file: ../sha1.c
+Invoking: GCC C Compiler
+gcc -D_DEBUG_ALLOC -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"sha1.d" -MT"sha1.d" -o"sha1.o" "../sha1.c"
+Finished building: ../sha1.c
+ 
+Building file: ../squeue.c
+Invoking: GCC C Compiler
+gcc -D_DEBUG_ALLOC -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"squeue.d" -MT"squeue.d" -o"squeue.o" "../squeue.c"
+Finished building: ../squeue.c
+ 
+Building target: libcommandlib.a
+Invoking: GCC Archiver
+ar -r "libcommandlib.a"  ./alloc.o ./encry_book.o ./hash.o ./ini_reader.o ./md5.o ./my_time.o ./sha1.o ./squeue.o   
+ar: creating libcommandlib.a
+Finished building target: libcommandlib.a
+ 

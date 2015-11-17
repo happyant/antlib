@@ -1,0 +1,68 @@
+/*
+ * tcp_protocol_http.h
+ *
+ *  Created on: May 24, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef TCP_PROTOCOL_HTTP_H_
+#define TCP_PROTOCOL_HTTP_H_
+
+
+#include "tcp_protocol_header.h"
+
+
+void create_tcpprotocol_http(tcp_protocol* p);
+void distory_tcpprotocol_http();
+
+
+//GET /path1/path2?k1=v1&k2=v2 HTTP1.1\r\n
+//host: localhost\r\n
+//\r\n
+struct httpget_parse_data
+{
+	char* _path;
+	char* _values;
+	int _path_len;
+	int _values_len;
+	int _state;//0 nothing,1 get path,2 get values,3 first line end,4 end
+};
+
+inline int parse_http_firstline(char* buf,int len,char** path,char** value,int* state)
+{
+	if(buf[3] != ' ' || buf[])
+
+	path = buf+i;
+
+	return 0;
+}
+
+static inline int parse_http_get(char* buf,int len,struct httpget_parse_data* data)
+{
+	int i = 0;
+	while(i < len)
+	{
+		switch(buf[i])
+		{
+		case '\n':
+			break;
+		case '?':
+			break;
+		case ' ':
+			break;
+		}
+		++i;
+	}
+	return i;
+}
+
+static inline int parse_http_post()
+{
+
+}
+
+
+#define HTTP_HEAD_LENGTH 3192
+
+
+#endif /* TCP_PROTOCOL_HTTP_H_ */

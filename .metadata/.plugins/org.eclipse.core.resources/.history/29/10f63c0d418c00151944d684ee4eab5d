@@ -1,0 +1,30 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../dblib/db_factory.c \
+../dblib/dblib.c \
+../dblib/mysql_con.c 
+
+OBJS += \
+./dblib/db_factory.o \
+./dblib/dblib.o \
+./dblib/mysql_con.o 
+
+C_DEPS += \
+./dblib/db_factory.d \
+./dblib/dblib.d \
+./dblib/mysql_con.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+dblib/%.o: ../dblib/%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -I../../ -I"/home/zhaolixiang/workspace/handler/antlib" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

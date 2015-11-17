@@ -1,0 +1,61 @@
+/*
+ * tcp_protocol_flash.c
+ *
+ *  Created on: May 24, 2015
+ *      Author: zhaolixiang
+ */
+
+#include "tcp_protocol_flash.h"
+#include "./tcp_connection.h"
+
+
+const char* _g_flash_recv_msg = "<cross-domain-policy/>";
+int _g_flash_sendlen = 0;
+
+
+
+void tcp_protocol_flash_connected(int result,struct tcp_connection* c)
+{
+	//nothing
+}
+
+void tcp_protocol_flash_recved(struct tcp_connection* c)
+{
+	if(_g_flash_sendlen == 0)
+	{
+		_g_flash_sendlen = strlen(_g_flash_send_buf);
+	}
+	tcp_write(&c->_socket,_g_flash_send_buf,_g_flash_sendlen);
+}
+
+void tcp_protocol_flash_do_msg(handler_msg* msg,struct tcp_connection* c)
+{
+	ASSERT(0);
+}
+
+void tcp_protocol_flash_send_over(handler_msg* msg,struct tcp_connection* c)
+{
+	ASSERT(0);
+}
+
+void tcp_protocol_flash_closed(struct tcp_connection* c)
+{
+	//nothing
+}
+
+////////////////////////////////////////////////////////
+
+void create_tcpprotocol_flash(tcp_protocol* p)
+{
+	p->_protocol_name = "FLASH CROSSDOMAIN";
+	p->_connected = tcp_protocol_flash_connected;
+	p->_do_send_msg = tcp_protocol_flash_do_msg;
+	p->_recv_data = tcp_protocol_flash_recved;
+	p->_send_msg_over = tcp_protocol_flash_send_over;
+	p->_closed = tcp_protocol_flash_closed;
+}
+
+void distory_tcpprotocol_flash()
+{
+	//nothing
+}

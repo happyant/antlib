@@ -1,0 +1,6 @@
+server_config.d server_config.o: ../server_config.c ../server_config.h \
+ ../../commandlib/ini_reader.h
+
+../server_config.h:
+
+../../commandlib/ini_reader.h:

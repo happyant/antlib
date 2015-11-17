@@ -1,0 +1,42 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../handler.c \
+../handler_msg.c \
+../handlerlib.c \
+../loger.c \
+../thread.c \
+../thread_data.c \
+../timer.c 
+
+OBJS += \
+./handler.o \
+./handler_msg.o \
+./handlerlib.o \
+./loger.o \
+./thread.o \
+./thread_data.o \
+./timer.o 
+
+C_DEPS += \
+./handler.d \
+./handler_msg.d \
+./handlerlib.d \
+./loger.d \
+./thread.d \
+./thread_data.d \
+./timer.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+%.o: ../%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

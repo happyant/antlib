@@ -1,0 +1,45 @@
+
+**** Build of configuration Debug for project handlerlib ****
+
+make all 
+Building file: ../handler.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"handler.d" -MT"handler.d" -o"handler.o" "../handler.c"
+Finished building: ../handler.c
+ 
+Building file: ../handler_msg.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"handler_msg.d" -MT"handler_msg.d" -o"handler_msg.o" "../handler_msg.c"
+Finished building: ../handler_msg.c
+ 
+Building file: ../handlerlib.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"handlerlib.d" -MT"handlerlib.d" -o"handlerlib.o" "../handlerlib.c"
+Finished building: ../handlerlib.c
+ 
+Building file: ../loger.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"loger.d" -MT"loger.d" -o"loger.o" "../loger.c"
+Finished building: ../loger.c
+ 
+Building file: ../thread.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"thread.d" -MT"thread.d" -o"thread.o" "../thread.c"
+Finished building: ../thread.c
+ 
+Building file: ../thread_data.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"thread_data.d" -MT"thread_data.d" -o"thread_data.o" "../thread_data.c"
+Finished building: ../thread_data.c
+ 
+Building file: ../timer.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"timer.d" -MT"timer.d" -o"timer.o" "../timer.c"
+Finished building: ../timer.c
+ 
+Building target: libhandlerlib.a
+Invoking: GCC Archiver
+ar -r "libhandlerlib.a"  ./handler.o ./handler_msg.o ./handlerlib.o ./loger.o ./thread.o ./thread_data.o ./timer.o   
+ar: creating libhandlerlib.a
+Finished building target: libhandlerlib.a
+ 

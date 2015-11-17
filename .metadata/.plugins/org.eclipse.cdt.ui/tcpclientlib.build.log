@@ -1,0 +1,15 @@
+
+**** Build of configuration Debug for project tcpclientlib ****
+
+make all 
+Building file: ../tcp_client.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_client.d" -MT"tcp_client.d" -o"tcp_client.o" "../tcp_client.cpp"
+Finished building: ../tcp_client.cpp
+ 
+Building target: libtcpclientlib.a
+Invoking: GCC Archiver
+ar -r "libtcpclientlib.a"  ./tcp_client.o   
+ar: creating libtcpclientlib.a
+Finished building target: libtcpclientlib.a
+ 

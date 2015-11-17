@@ -1,0 +1,135 @@
+/*
+ * loglib.c
+ *
+ *  Created on: 2014-10-10
+ *      Author: lx
+ */
+
+
+
+#include "log_header.h"
+#include "loglib.h"
+#include "log_writer.h"
+
+
+const char* get_log_date()
+{
+	return get_mydate();
+}
+
+struct loglib
+{
+	uint32_t _handlerid;
+	int _logfd;
+	bool _unwrite;
+	char _logname_pre[16];
+};
+
+
+struct loglib _g_loglib = {0,ERROR_FD,false,""};
+
+
+
+void hmsgreader_loglib_writelog(handler_msg* msg,void* nothing)
+{
+	assert(msg->_data_len <= LOGBUF_MAX);
+	wite_logfile(_g_loglib._logfd,(char*)msg->_data,msg->_data_len);
+}
+
+
+void hmsgreader_loglib_changelog(handler_msg* msg,void* nothing)
+{
+	char buf[256];
+	_create_log_name(_g_loglib._logname_pre,buf,sizeof(buf));
+	int fd = open_logfile(buf);
+	if(fd != ERROR_FD)
+	{
+		close_logfile(_g_loglib._logfd);
+		_g_loglib._logfd = fd;
+	}
+	//set next change event
+	add_timer(24*60*60,_g_loglib._handlerid,HMSGTYPE_LOGLIB_CHANGEFILE,NULL,0);
+}
+
+
+void hmsgreader_loglib_checkdask(handler_msg* msg,void* nothing)
+{
+	int timer_sec = 3600;
+	uint64_t freebytes;
+	char path[1024];
+	getcwd(path,1024);
+	if(device_free_space(path,&freebytes) == 0)
+	{
+		freebytes /= 1024*1024; //M
+		if(freebytes < 512)		//512M
+		{
+			_g_loglib._unwrite = true;
+			timer_sec = 60;
+		}
+		else if(freebytes < 1024) //2G
+		{
+			timer_sec = 300;
+		}
+		add_timer(timer_sec,_g_loglib._handlerid,HMSGTYPE_LOGLIB_CHANGEFILE,NULL,0);
+	}
+}
+
+
+void init_loglib(int handler_poolid,const char* logname_pre)
+{
+	_g_loglib._handlerid = register_handler(handler_poolid,NULL,NULL);
+	assert(_g_loglib._handlerid  > 0);
+	strncpy(_g_loglib._logname_pre,logname_pre,15);
+	_g_loglib._logname_pre[15] = 0;
+
+	register_hmsg_reader(HMSGTYPE_LOGLIB_WRITELOG,hmsgreader_loglib_writelog);
+	register_hmsg_reader(HMSGTYPE_LOGLIB_CHANGEFILE,hmsgreader_loglib_changelog);
+	register_hmsg_reader(HMSGTYPE_LOGLIB_CHEACKDASK,hmsgreader_loglib_checkdask);
+
+	char buf[256];
+	_create_log_name(_g_loglib._logname_pre,buf,sizeof(buf));
+	_g_loglib._logfd = open_logfile(buf);
+	assert(_g_loglib._logfd != ERROR_FD);
+
+	add_timer(get_nextzerotime_sec(),_g_loglib._handlerid,HMSGTYPE_LOGLIB_CHANGEFILE,NULL,0);
+	add_timer(0,_g_loglib._handlerid,HMSGTYPE_LOGLIB_CHEACKDASK,NULL,0);
+}
+
+
+void uninit_loglib()
+{
+	assert(_g_loglib._logfd != ERROR_FD);
+	close_logfile(_g_loglib._logfd);
+	_g_loglib._logfd = ERROR_FD;
+}
+
+
+
+int write_log(const char* log,...)
+{
+	if(_g_loglib._unwrite)
+		return -2;
+
+	assert(_g_loglib._handlerid > 0);
+
+	handler_msg* msg = create_handler_msg(LOGBUF_MAX);
+	char* buf = (char*)msg->_data;
+	va_list ap;
+	va_start(ap, log);
+	int off = vsnprintf(buf,LOGBUF_MAX,log,ap);
+	va_end(ap);
+	if(off <= 0)
+	{
+		return -1;
+	}
+	if( off > LOGBUF_MAX-1)
+	{
+		off = LOGBUF_MAX;
+		buf[LOGBUF_MAX-1] = '\n';
+	}
+	msg->_data_len = off;
+	msg->_msg_type = HMSGTYPE_LOGLIB_WRITELOG;
+
+	send_handler_msg(_g_loglib._handlerid,msg);
+	return 0;
+}

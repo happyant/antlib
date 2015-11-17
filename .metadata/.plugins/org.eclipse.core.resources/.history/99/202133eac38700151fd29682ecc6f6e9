@@ -1,0 +1,108 @@
+/*
+ * login_netmsg.c
+ *
+ *  Created on: Nov 8, 2015
+ *      Author: zhaolixiang
+ */
+#include "login_netmsg.h"
+#include "protocollib/tcp_msglist.h"
+#include "protocollib/http_protocol.h"
+#include "protocollib/protocollib.h"
+#include "tcplib/tcplib.h"
+#include "commandlib/md5.h"
+#include "server_db.h"
+
+
+void _netmsg_userlogin_back(handler_msg* msg,uint64_t userid,uint64_t netid,int result)
+{
+	int n;
+	time_t t;
+	char key[33];
+	tcp_stream* info = (tcp_stream*)msg->_data;
+	if(result == 0)
+	{
+		t = get_systime();
+		MYMD5_ENCRYPT2((uint8_t*)&userid,sizeof(uint64_t),(uint8_t*)&t,sizeof(time_t),key);
+		n = sprintf(info->_buf,"{\"id\":%lu,\"result\":%d,\"key\":\"%s\",\"time\":%lu}",userid,result,key,(uint64_t)t);
+	}
+	else
+	{
+		n = sprintf(info->_buf,"{\"id\":0,\"result\":%d,\"key\":\"null\",\"time\":0}",result);
+	}
+	msg->_datalen = n;
+	msg->_data = info->_buf;
+	msg->_msgid = 0;
+	tcp_sendmsg(netid,msg);
+}
+
+void netmsg_userlogin(handler_msg* msg,uint64_t userid,uint64_t netid)
+{
+	tcp_stream* info = (tcp_stream*)msg->_data;
+	static const char* keys[2] = {"user","password"};
+	char* vl[2] = {0,0};
+	if(-1 == parse_http_values(info->_buf+info->_off,msg->_datalen,keys,vl,2))
+	{
+		close_tcpconnection(netid,"http login message parser error");
+		return;
+	}
+	if(vl[0] == 0 || vl[1] == 0)
+	{
+		close_tcpconnection(netid,"http login message is not full");
+		return;
+	}
+	mydb* db = get_mydb(0);
+	ASSERT(db);
+	char sql[256];
+	int n = snprintf(sql,sizeof(sql),"select pswd,state,id from user where name='%s'",vl[0]);
+	if(n >= 256 || n <= 0)
+	{
+		close_tcpconnection(netid,"http login message is not full");
+	}
+	mydb_recordset* rset = get_recordset(db,sql,n);
+	if(NULL == rset || rset->_row_num <= 0)
+	{
+		//user is not exist
+		_netmsg_userlogin_back(msg,0,netid,2);
+		return;
+	}
+	char* dbpswd = get_recordset_value(db,rset,0);
+	char pswd[33];
+	MYMD5_ENCRYPT2((uint8_t*)vl[0],strlen(vl[0]),(uint8_t*)vl[1],strlen(vl[1]),pswd);
+	if(0 != strcmp(dbpswd,pswd))
+	{
+		//password error
+		_netmsg_userlogin_back(msg,0,netid,1);
+		return ;
+	}
+	userid = (uint64_t)(atoll(get_recordset_value(db,rset,2)));
+
+
+	//login successful
+	_netmsg_userlogin_back(msg,userid,netid,0);
+}
+
+
+
+void netmsg_userrelogin(handler_msg* msg,uint64_t userid,uint64_t netid)
+{
+	//id=%ld&time=%ld&key=%s&user=%s
+	//{"result":%d}
+
+}
+
+
+//login,add,update
+
+
+
+
+/////////////////////////////////////////////////////////////////////////
+
+void login_netmsg_init()
+{
+	int min = strlen("username=&password=&type=");
+	int max = strlen("username=&password=&type=")+16+32+1;
+	tcpmsg_regist_string("login",1024,min,max,netmsg_userlogin);
+}
+
+

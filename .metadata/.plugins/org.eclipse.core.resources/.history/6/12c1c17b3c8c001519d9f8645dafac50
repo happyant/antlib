@@ -1,0 +1,16 @@
+squeue.d squeue.o: ../squeue.c ../squeue.h ../sys_header.h ../locker.h \
+ ../atomic_lock.h ../alloc.h ../my_string.h ../my_time.h
+
+../squeue.h:
+
+../sys_header.h:
+
+../locker.h:
+
+../atomic_lock.h:
+
+../alloc.h:
+
+../my_string.h:
+
+../my_time.h:

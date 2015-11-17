@@ -1,0 +1,36 @@
+/*
+ * tcp_client.h
+ *
+ *  Created on: Oct 8, 2015
+ *      Author: zhaolixiang
+ */
+#ifndef TCP_CLIENT_H_
+#define TCP_CLIENT_H_
+
+
+namespace ANTNET
+{
+	typedef unsigned int TCPIP;
+
+	void tcp_init();
+
+	void tcp_uninit();
+
+	void running();
+
+	TCPIP tcp_gethostbyname(const char* host);
+
+	int tcp_connect(TCPIP ip,int port,int timeout);
+
+	int tcp_connect_cb(TCPIP ip,int port,int timeout,void (*cb)(int result,int netid,int key),int key);
+
+	int tcp_send_msg(int netid,void* msg,int len);
+
+	int tcp_close(int netid);
+
+
+	int regist_protocol();
+
+}
+
+#endif

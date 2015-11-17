@@ -1,0 +1,51 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../protocollib/http_protocol.c \
+../protocollib/protocollib.c \
+../protocollib/tcp_clientgroup.c \
+../protocollib/tcp_msglist.c \
+../protocollib/tcp_protocol.c \
+../protocollib/tcp_protocol12.c \
+../protocollib/tcp_protocol4.c \
+../protocollib/tcp_protocol_flash.c \
+../protocollib/tcp_protocol_http.c \
+../protocollib/tcp_stream.c 
+
+OBJS += \
+./protocollib/http_protocol.o \
+./protocollib/protocollib.o \
+./protocollib/tcp_clientgroup.o \
+./protocollib/tcp_msglist.o \
+./protocollib/tcp_protocol.o \
+./protocollib/tcp_protocol12.o \
+./protocollib/tcp_protocol4.o \
+./protocollib/tcp_protocol_flash.o \
+./protocollib/tcp_protocol_http.o \
+./protocollib/tcp_stream.o 
+
+C_DEPS += \
+./protocollib/http_protocol.d \
+./protocollib/protocollib.d \
+./protocollib/tcp_clientgroup.d \
+./protocollib/tcp_msglist.d \
+./protocollib/tcp_protocol.d \
+./protocollib/tcp_protocol12.d \
+./protocollib/tcp_protocol4.d \
+./protocollib/tcp_protocol_flash.d \
+./protocollib/tcp_protocol_http.d \
+./protocollib/tcp_stream.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+protocollib/%.o: ../protocollib/%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -I../../ -I"/home/zhaolixiang/workspace/handler/antlib" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

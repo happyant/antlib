@@ -1,0 +1,65 @@
+/*
+ * log_writer.h
+ *
+ *  Created on: 2014-10-1
+ *      Author: happy_ant
+ */
+
+#ifndef LOG_WRITER_H_
+#define LOG_WRITER_H_
+
+
+#include "log_header.h"
+
+
+
+static inline int open_logfile(const char* name)
+{
+	return open(name,O_CREAT|O_WRONLY|O_APPEND,0666);
+}
+
+
+static inline int wite_logfile(int fd,char* buf,int len)
+{
+	if(fd == ERROR_FD)
+		return -1;
+	return write(fd,buf,len);
+}
+
+
+static inline void close_logfile(int fd)
+{
+	if(fd != ERROR_FD)
+		close(fd);
+}
+
+
+
+static inline int device_free_space(const char* path,uint64_t* free_bytes)
+{
+	struct statfs sfs;
+	if (0 != statfs(path, &sfs))
+		return -1;
+
+	*free_bytes = (uint64_t)sfs.f_bavail * sfs.f_bsize;
+	return 0;
+}
+
+
+static inline void _create_log_name(const char* pre,char* buf,int len)
+{
+	time_t t = time(0);
+	struct tm l;
+	localtime_r(&t,&l);
+	int off = sprintf(buf,"%s%d%02d%02d_",pre,l.tm_year+1900,l.tm_mon+1,l.tm_mday);
+	int i = 0;
+	while(true)
+	{
+		sprintf(buf+off,"%d.log",i);
+		if(i >= 99 || access(buf,0) == -1)
+			break;
+		++i;
+	}
+}
+
+#endif /* LOG_WRITER_H_ */

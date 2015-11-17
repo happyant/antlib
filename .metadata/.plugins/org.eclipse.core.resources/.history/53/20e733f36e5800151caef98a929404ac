@@ -1,0 +1,33 @@
+/*
+ * log_header.h
+ *
+ *  Created on: 2014-10-10
+ *      Author: lx
+ */
+
+#ifndef LOG_HEADER_H_
+#define LOG_HEADER_H_
+
+
+#include "../commandlib/list.h"
+#include "../commandlib/sys_header.h"
+#include "../commandlib/atomic_lock.h"
+#include "../commandlib/mytime.h"
+#include "../handlerlib/handlerlib.h"
+
+
+/*
+ * @used:101 ~ 199
+ * */
+
+#define HMSGTYPE_LOGLIB_WRITELOG 	101
+
+#define HMSGTYPE_LOGLIB_CHANGEFILE 102
+
+#define HMSGTYPE_LOGLIB_CHEACKDASK 103
+
+
+
+#define LOGBUF_MAX 8192
+
+#endif /* LOG_HEADER_H_ */

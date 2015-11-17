@@ -1,0 +1,3 @@
+server_master.d server_master.o: ../server_master.c ../server_master.h
+
+../server_master.h:

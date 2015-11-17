@@ -1,0 +1,11 @@
+
+
+function init_main()
+	SET_MSG("",1,1,"luatest.lua","domsg1_1")
+end
+
+
+function domsg1_1(udata,msg)
+	print("1111")
+	
+end

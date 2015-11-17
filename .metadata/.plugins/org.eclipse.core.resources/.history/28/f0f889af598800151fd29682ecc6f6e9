@@ -1,0 +1,64 @@
+/*
+ * server_script_lua.c
+ *
+ *  Created on: Nov 11, 2015
+ *      Author: zhaolixiang
+ */
+
+#include "server_script_lua.h"
+#include "lualib/lua.h"
+#include "lualib/lauxlib.h"
+#include "lualib/lualib.h"
+
+lua_State* L = NULL;
+
+
+
+int myscriptlua_regist_msg(lua_State* L)
+{
+	const char* path = luaL_checkstring(L,1);
+	int id1 = luaL_checkint(L,2);
+	int id2 = luaL_checkint(L,3);
+	const char* file = luaL_checkstring(L,4);
+	const char* func = luaL_checkstring(L,5);
+
+	if(id1 <= 0 || id1 > 63 || id2 < 0 || id2 > 1023)
+	{
+		return -1;
+	}
+	int id = ((id1&0x3f)<<10) | (id2&0x3FF);
+
+	return 0;
+}
+
+int script_lua_call(const char* file,const char* func)
+{
+	luaL_loadfile(L,file);
+	lua_pcall(L,0,0,0);
+	lua_getglobal(L,func);
+	lua_pcall(L,0,0,0);
+	return 0;
+}
+
+
+
+void script_lua_init()
+{
+	L = luaL_newstate();
+	luaL_openlibs(L);
+
+	lua_pushcfunction(L,myscriptlua_regist_msg);
+	lua_setglobal(L,"SET_MSG");
+
+}
+
+void script_lua_uninit()
+{
+	if(L)
+	{
+		lua_close(L);
+		L = NULL;
+	}
+}
+
+

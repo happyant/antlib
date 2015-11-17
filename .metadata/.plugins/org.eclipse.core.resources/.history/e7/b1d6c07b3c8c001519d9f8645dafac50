@@ -1,0 +1,5 @@
+my_time.d my_time.o: ../my_time.c ../my_time.h ../sys_header.h
+
+../my_time.h:
+
+../sys_header.h:

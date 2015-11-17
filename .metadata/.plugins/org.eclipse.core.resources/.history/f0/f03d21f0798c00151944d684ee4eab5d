@@ -1,0 +1,42 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../handlerlib/handler.c \
+../handlerlib/handler_msg.c \
+../handlerlib/handlerlib.c \
+../handlerlib/loger.c \
+../handlerlib/thread.c \
+../handlerlib/thread_data.c \
+../handlerlib/timer.c 
+
+OBJS += \
+./handlerlib/handler.o \
+./handlerlib/handler_msg.o \
+./handlerlib/handlerlib.o \
+./handlerlib/loger.o \
+./handlerlib/thread.o \
+./handlerlib/thread_data.o \
+./handlerlib/timer.o 
+
+C_DEPS += \
+./handlerlib/handler.d \
+./handlerlib/handler_msg.d \
+./handlerlib/handlerlib.d \
+./handlerlib/loger.d \
+./handlerlib/thread.d \
+./handlerlib/thread_data.d \
+./handlerlib/timer.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+handlerlib/%.o: ../handlerlib/%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -I../../ -I"/home/zhaolixiang/workspace/handler/antlib" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

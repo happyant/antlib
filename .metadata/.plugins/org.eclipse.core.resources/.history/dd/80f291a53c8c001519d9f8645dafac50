@@ -1,0 +1,36 @@
+handler.d handler.o: ../handler.c ../handler.h ../../commandlib/hqueue.h \
+ ../../commandlib/squeue.h ../../commandlib/sys_header.h \
+ ../../commandlib/locker.h ../../commandlib/atomic_lock.h \
+ ../../commandlib/alloc.h ../../commandlib/my_string.h ../handler_msg.h \
+ ../../commandlib/command_header.h ../../commandlib/double_list.h \
+ ../../commandlib/my_time.h ../thread_data.h ../thread_proc.h ../thread.h
+
+../handler.h:
+
+../../commandlib/hqueue.h:
+
+../../commandlib/squeue.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/locker.h:
+
+../../commandlib/atomic_lock.h:
+
+../../commandlib/alloc.h:
+
+../../commandlib/my_string.h:
+
+../handler_msg.h:
+
+../../commandlib/command_header.h:
+
+../../commandlib/double_list.h:
+
+../../commandlib/my_time.h:
+
+../thread_data.h:
+
+../thread_proc.h:
+
+../thread.h:

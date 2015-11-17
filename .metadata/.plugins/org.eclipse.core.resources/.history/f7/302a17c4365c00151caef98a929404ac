@@ -1,0 +1,39 @@
+/*
+ * tcplib.h
+ *
+ *  Created on: 2014-10-1
+ *      Author: happy_ant
+ * Email: zhaolixiang99@163.com
+ */
+
+#ifndef TCPLIB_H_
+#define TCPLIB_H_
+
+#include "tcp_header.h"
+
+
+void init_tcplib(int handler_groupid);
+void uninit_tcplib();
+
+int apply_tcpgroup_id();
+/*
+ * @return: 0 is success,
+ * @ip: ipv4,NULL is 127.0.0.1
+ * @port: must be >0
+ * @protocol: 0 is tcp4,1 is tcp12,2 is http,3 is flash
+ * */
+int listen_tcpport(int groupid,const char* ip,int port,int protocol);
+void bind_tcpgroup_server(int groupid,int serverid);
+
+int cennect_server(int serverid,uint32_t ip,int port,int protocol,void* msg,int msg_len);
+
+int send_netmsg(uint64_t netid,handler_msg* msg);
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+#endif /* TCPLIB_H_ */

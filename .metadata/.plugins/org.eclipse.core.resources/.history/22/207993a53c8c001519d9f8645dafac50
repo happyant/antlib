@@ -1,0 +1,28 @@
+thread.d thread.o: ../thread.c ../thread.h ../thread_data.h \
+ ../../commandlib/command_header.h ../../commandlib/double_list.h \
+ ../../commandlib/sys_header.h ../../commandlib/alloc.h \
+ ../../commandlib/my_string.h ../../commandlib/locker.h \
+ ../../commandlib/atomic_lock.h ../../commandlib/my_time.h \
+ ../../commandlib/double_list.h
+
+../thread.h:
+
+../thread_data.h:
+
+../../commandlib/command_header.h:
+
+../../commandlib/double_list.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/alloc.h:
+
+../../commandlib/my_string.h:
+
+../../commandlib/locker.h:
+
+../../commandlib/atomic_lock.h:
+
+../../commandlib/my_time.h:
+
+../../commandlib/double_list.h:

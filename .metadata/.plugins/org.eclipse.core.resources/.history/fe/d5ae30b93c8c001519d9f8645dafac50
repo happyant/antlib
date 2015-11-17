@@ -1,0 +1,47 @@
+tcp_listener.d tcp_listener.o: ../tcp_listener.c ../tcp_listener.h \
+ ../tcp_connection_list.h ../tcp_connection.h ../tcp_queue.h \
+ ../tcp_header.h ../../commandlib/command_header.h \
+ ../../commandlib/double_list.h ../../commandlib/sys_header.h \
+ ../../commandlib/alloc.h ../../commandlib/locker.h \
+ ../../commandlib/atomic_lock.h ../../commandlib/my_time.h \
+ ../../handlerlib/handlerlib.h ../../handlerlib/handler_msg.h \
+ ../../handlerlib/timer.h ../../commandlib/my_time.h \
+ ../../handlerlib/handler_msg.h ../tcp_socket.h ../tcp_epoll.h
+
+../tcp_listener.h:
+
+../tcp_connection_list.h:
+
+../tcp_connection.h:
+
+../tcp_queue.h:
+
+../tcp_header.h:
+
+../../commandlib/command_header.h:
+
+../../commandlib/double_list.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/alloc.h:
+
+../../commandlib/locker.h:
+
+../../commandlib/atomic_lock.h:
+
+../../commandlib/my_time.h:
+
+../../handlerlib/handlerlib.h:
+
+../../handlerlib/handler_msg.h:
+
+../../handlerlib/timer.h:
+
+../../commandlib/my_time.h:
+
+../../handlerlib/handler_msg.h:
+
+../tcp_socket.h:
+
+../tcp_epoll.h:

@@ -1,0 +1,16 @@
+/*
+ * server_script_lua.h
+ *
+ *  Created on: Nov 11, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef SERVER_SCRIPT_LUA_H_
+#define SERVER_SCRIPT_LUA_H_
+
+
+void script_lua_init();
+void script_lua_uninit();
+
+
+#endif /* SERVER_SCRIPT_LUA_H_ */

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;protocollib/net_protocol.h&apos; to &apos;protocollib.h&apos;" description="Rename resource &apos;net_protocol.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="net_protocol.h" name="protocollib.h" stamp="1445870916404" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;protocollib/net_protocol.c&apos; to &apos;protocollib.c&apos;" description="Rename resource &apos;net_protocol.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="net_protocol.c" name="protocollib.c" stamp="1445870927601" updateReferences="true"/>
+</session>

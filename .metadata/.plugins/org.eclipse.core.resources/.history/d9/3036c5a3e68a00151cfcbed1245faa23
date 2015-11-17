@@ -1,0 +1,27 @@
+/*
+ * user_msg.h
+ *
+ *  Created on: Nov 14, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef USER_MSG_H_
+#define USER_MSG_H_
+
+#include "handlerlib/handler_msg.h"
+#include "protocollib/tcp_msglist.h"
+
+#define USERMSG_LOGIN 	TCPMSGID(1,1)
+#define USERMSG_CHECK	TCPMSGID(1,3)
+#define USERMSG_ADD 	TCPMSGID(1,5)
+#define USERMSG_UPDATE 	TCPMSGID(1,7)
+#define USERMSG_UPDATEPASSWORD 	TCPMSGID(1,9)
+
+
+void handle_usermsg_login(handler_msg* msg,void* user_group);
+void handle_usermsg_check(handler_msg* msg,void* user_group);
+void handle_usermsg_add(handler_msg* msg,void* user_group);
+void handle_usermsg_update(handler_msg* msg,void* user_group);
+void handle_usermsg_updatepassword(handler_msg* msg,void* user_group);
+
+#endif /* USER_MSG_H_ */

@@ -1,0 +1,6 @@
+net_protocol.d net_protocol.o: ../net_protocol.c ../net_protocol.h \
+ ../login_netmsg.h
+
+../net_protocol.h:
+
+../login_netmsg.h:

@@ -1,0 +1,194 @@
+/*
+ * tcplib.c
+ *
+ *  Created on: 2014-10-1
+ *      Author: happy_ant
+ * Email: zhaolixiang99@163.com
+ */
+
+
+#include "tcplib.h"
+#include "tcp_server.h"
+#include "./protocol/tcp_protocol4.h"
+#include "./protocol/tcp_protocol12.h"
+#include "./protocol/tcp_protocol_http.h"
+#include "./protocol/tcp_protocol_flash.h"
+
+struct tcp_protocol_node
+{
+	tcp_protocol _protocol;
+	int _pid;
+	struct tcp_protocol_node* _next;
+};
+
+struct tcplib
+{
+	int _handler_group_id;
+	struct tcp_listener_list* _listeners;
+	struct tcp_protocol_node* _protocols;
+	struct tcp_server* _servers;
+};
+
+
+struct tcplib _g_tcplib = {-1};
+
+
+void init_tcplib(int handler_groupid)
+{
+	ASSERT(_g_tcplib._handler_group_id == -1);
+	memset(&_g_tcplib,0,sizeof(_g_tcplib));
+	_g_tcplib._handler_group_id = handler_groupid;
+}
+
+void uninit_tcplib()
+{
+
+}
+int apply_tcpgroup_id()
+{
+	struct tcp_listener_list* l = my_new(struct tcp_listener_list);
+	memset(l,0,sizeof(*l));
+	if(_g_tcplib._listeners == NULL)
+	{
+		_g_tcplib._listeners = l;
+		return 1;
+	}
+	int i = 1;
+	struct tcp_listener_list* node = _g_tcplib._listeners;
+	while(node->_next) {
+		++i;
+		node = node->_next;
+	}
+	node->_next = l;
+	return i+1;
+}
+
+struct tcp_listener_list* _get_tcplisten_list(int id)
+{
+	int i = 1;
+	struct tcp_listener_list* node = _g_tcplib._listeners;
+	while(node->_next) {
+		++i;
+		node = node->_next;
+	}
+}
+
+int listen_tcpport(int groupid,const char* ip,int port,int protocol)
+{
+
+}
+void bind_tcpgroup_server(int groupid,int serverid)
+{
+
+}
+
+int cennect_server(int serverid,uint32_t ip,int port,int protocol,void* msg,int msg_len)
+{
+
+}
+
+int send_netmsg(uint64_t netid,handler_msg* msg)
+{
+
+}
+
+
+
+
+
+
+
+//
+//struct tcplib
+//{
+//	uint32_t _servers_count;
+//	struct tcp_listener_list _listeners;
+//	tcp_protocol _base_protocols[4];
+//	struct tcp_server* _servers;
+//};
+//
+//
+//struct tcplib _g_tcplib = {0};
+//
+//
+//void init_tcplib(int handler_groupid,int handler_count)
+//{
+//	ASSERT(handler_count > 0 && handler_count <= 512);
+//
+//	if(_g_tcplib._servers_count != 0)
+//		return;
+//	memset(&_g_tcplib,0,sizeof(_g_tcplib));
+//	//listen list
+//	init_tcplistener_list(&_g_tcplib._listeners);
+//	//connections list
+//	_g_tcplib._servers_count = handler_count;
+//	_g_tcplib._servers = (struct tcp_server*)my_malloc(sizeof(struct tcp_server)*handler_count);
+//	int i;
+//	struct tcp_server* s;
+//	for(i = 0; i < handler_count; i++)
+//	{
+//		s = &_g_tcplib._servers[i];
+//		create_tcpserver(s,&_g_tcplib._listeners,i);
+//		register_handler(i+1,handler_groupid,
+//				do_tcpserver_msg,
+//				do_tcpserver,
+//				distory_tcpserver,
+//				s);
+//		s->_handlerid = i+1;
+//	}
+//	//protocol
+//	create_tcpprotocol4(&_g_tcplib._base_protocols[TCPPROTOCOL_HEAD4]);
+//	create_tcpprotocol12(&_g_tcplib._base_protocols[TCPPROTOCOL_HEAD12]);
+//	create_tcpprotocol_http(&_g_tcplib._base_protocols[TCPPROTOCOL_HTTP]);
+//	create_tcpprotocol_flash(&_g_tcplib._base_protocols[TCPPROTOCOL_FLASH]);
+//}
+//
+//void uninit_tcplib()
+//{
+//	uninit_tcplistener_list(&_g_tcplib._listeners);
+//
+//	distory_tcpprotocol4();
+//	distory_tcpprotocol12();
+//	distory_tcpprotocol_http();
+//	distory_tcpprotocol_flash();
+//}
+//
+//int listen_tcpport(const char* ip,int port,int protocol)
+//{
+//	if(protocol < 0 || protocol > 3 || port <= 0)
+//		return -1;
+//	tcp_protocol* p = &_g_tcplib._base_protocols[protocol];
+//	if(add_tcplistener(&_g_tcplib._listeners,ip,port,p))
+//	{
+//		return 0;
+//	}
+//	return -1;
+//}
+//
+//int cennect_server(uint32_t ip,int port,int protocol)
+//{
+//	static uint32_t g_index = 0;
+//	if(protocol < 0 || protocol > 3 || port <= 0)
+//		return -1;
+//	tcp_protocol* p = &_g_tcplib._base_protocols[protocol];
+//	uint32_t index = LOCK_ADD(g_index,1) % _g_tcplib._servers_count;
+//
+//	tcpserver_connect(&_g_tcplib._servers[index],ip,port,p);
+//	return 0;
+//}
+//
+//int send_netmsg(handler_msg* msg)
+//{
+//	ASSERT(msg->_userid > 0);
+//	int index = GETNETIDLISTID(msg->_userid);
+//	if(index < _g_tcplib._servers_count)
+//	{
+//		send_handler_msg(_g_tcplib._servers[index]._handlerid,msg);
+//		return 0;
+//	}
+//	return -1;
+//}
+//
+//
+//
+

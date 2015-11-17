@@ -1,0 +1,37 @@
+/*
+ * server_script_lua.c
+ *
+ *  Created on: Nov 11, 2015
+ *      Author: zhaolixiang
+ */
+
+#include "server_script_lua.h"
+#include "lualib/lua.h"
+#include "lualib/lauxlib.h"
+#include "lualib/lualib.h"
+
+lua_State* L = NULL;
+
+int myscriptlua_regist_msg(lua_State* L)
+{
+
+	return 0;
+}
+
+void script_lua_init()
+{
+	L = luaL_newstate();
+	luaL_openlibs(L);
+
+}
+
+void script_lua_uninit()
+{
+	if(L)
+	{
+		lua_close(L);
+		L = NULL;
+	}
+}
+
+

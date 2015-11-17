@@ -1,0 +1,10 @@
+ini_reader.d ini_reader.o: ../ini_reader.c ../ini_reader.h ../alloc.h \
+ ../sys_header.h ../my_string.h
+
+../ini_reader.h:
+
+../alloc.h:
+
+../sys_header.h:
+
+../my_string.h:

@@ -1,0 +1,16 @@
+/*
+ * user_msg.h
+ *
+ *  Created on: Nov 14, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef USER_MSG_H_
+#define USER_MSG_H_
+
+#include "hanlderlib/handler_msg.h"
+
+void hande_usermsg_login(handler_msg* msg,void* user_group);
+
+
+#endif /* USER_MSG_H_ */

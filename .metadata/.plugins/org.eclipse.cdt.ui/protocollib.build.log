@@ -1,0 +1,60 @@
+
+**** Build of configuration Debug for project protocollib ****
+
+make all 
+Building file: ../http_protocol.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"http_protocol.d" -MT"http_protocol.d" -o"http_protocol.o" "../http_protocol.c"
+Finished building: ../http_protocol.c
+ 
+Building file: ../protocollib.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"protocollib.d" -MT"protocollib.d" -o"protocollib.o" "../protocollib.c"
+Finished building: ../protocollib.c
+ 
+Building file: ../tcp_clientgroup.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_clientgroup.d" -MT"tcp_clientgroup.d" -o"tcp_clientgroup.o" "../tcp_clientgroup.c"
+Finished building: ../tcp_clientgroup.c
+ 
+Building file: ../tcp_msglist.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_msglist.d" -MT"tcp_msglist.d" -o"tcp_msglist.o" "../tcp_msglist.c"
+Finished building: ../tcp_msglist.c
+ 
+Building file: ../tcp_protocol.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_protocol.d" -MT"tcp_protocol.d" -o"tcp_protocol.o" "../tcp_protocol.c"
+Finished building: ../tcp_protocol.c
+ 
+Building file: ../tcp_protocol12.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_protocol12.d" -MT"tcp_protocol12.d" -o"tcp_protocol12.o" "../tcp_protocol12.c"
+Finished building: ../tcp_protocol12.c
+ 
+Building file: ../tcp_protocol4.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_protocol4.d" -MT"tcp_protocol4.d" -o"tcp_protocol4.o" "../tcp_protocol4.c"
+Finished building: ../tcp_protocol4.c
+ 
+Building file: ../tcp_protocol_flash.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_protocol_flash.d" -MT"tcp_protocol_flash.d" -o"tcp_protocol_flash.o" "../tcp_protocol_flash.c"
+Finished building: ../tcp_protocol_flash.c
+ 
+Building file: ../tcp_protocol_http.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_protocol_http.d" -MT"tcp_protocol_http.d" -o"tcp_protocol_http.o" "../tcp_protocol_http.c"
+Finished building: ../tcp_protocol_http.c
+ 
+Building file: ../tcp_stream.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"tcp_stream.d" -MT"tcp_stream.d" -o"tcp_stream.o" "../tcp_stream.c"
+Finished building: ../tcp_stream.c
+ 
+Building target: libprotocollib.a
+Invoking: GCC Archiver
+ar -r "libprotocollib.a"  ./http_protocol.o ./protocollib.o ./tcp_clientgroup.o ./tcp_msglist.o ./tcp_protocol.o ./tcp_protocol12.o ./tcp_protocol4.o ./tcp_protocol_flash.o ./tcp_protocol_http.o ./tcp_stream.o   
+ar: creating libprotocollib.a
+Finished building target: libprotocollib.a
+ 

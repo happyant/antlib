@@ -1,0 +1,16 @@
+/*
+ * tcp_client.h
+ *
+ *  Created on: Oct 8, 2015
+ *      Author: zhaolixiang
+ */
+#ifndef TCP_CLIENT_H_
+#define TCP_CLIENT_H_
+
+
+
+int tcp_connect();
+
+
+
+#endif

@@ -1,0 +1,74 @@
+/*
+ * http_protocol.h
+ *
+ *  Created on: Sep 18, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef HTTP_PROTOCOL_H_
+#define HTTP_PROTOCOL_H_
+
+//////////////////////////////////////////////////////////
+//http server request
+
+/*	GET /path1/path2?k1=v1&k2=v2 HTTP/1.1\r\n
+ *  Host: localhost\r\n
+ *	Range:0-1000\r\n
+ *	Keep-Alive: 300\r\n
+ *	Connection: keep-alive\r\n
+ *	\r\n
+ * */
+
+static inline int create_http_request_get(char* buf,int len,char* host,char* path,char* values)
+{
+	const char* request_str = "GET %s?%s HTTP/1.1\r\n"
+			"Host: %s\r\n"
+			"Keep-Alive: 300\r\n"
+			"Connection: keep-alive\r\n";
+
+}
+
+
+
+
+/* POST /path1/path2 HTTP/1.1\r\n
+ * Content-Length: 100\r\n
+ * \r\n
+ * k1=v1&k2=v2
+ * */
+
+
+
+//////////////////////////////////////////////////////////
+//http server response
+
+/*	HTTP/1.1 404 Not Found\r\n
+ * 	Server:shenyv.com\r\n
+ * 	Content-Length: 111\r\n
+ * 	Connection: keep-alive\r\n
+ * 	\r\n
+ * 	values
+ * */
+
+
+
+
+//////////////////////////////////////////////////////////
+//http client request
+
+
+
+
+//////////////////////////////////////////////////////////
+//http client response
+
+
+
+
+
+
+
+
+
+
+#endif /* HTTP_PROTOCOL_H_ */

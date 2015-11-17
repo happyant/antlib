@@ -1,0 +1,14 @@
+hash.d hash.o: ../hash.c ../hash.h ../alloc.h ../sys_header.h \
+ ../my_string.h ../locker.h ../atomic_lock.h
+
+../hash.h:
+
+../alloc.h:
+
+../sys_header.h:
+
+../my_string.h:
+
+../locker.h:
+
+../atomic_lock.h:

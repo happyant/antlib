@@ -1,0 +1,19 @@
+/*
+ * log_ep.h
+ *
+ *  Created on: 2014-10-10
+ *      Author: lx
+ */
+
+#ifndef LOG_EP_H_
+#define LOG_EP_H_
+
+
+
+
+int log_example();
+
+
+
+
+#endif /* LOG_EP_H_ */

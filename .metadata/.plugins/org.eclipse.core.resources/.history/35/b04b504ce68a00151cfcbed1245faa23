@@ -1,0 +1,15 @@
+/*
+ * user_msg.h
+ *
+ *  Created on: Nov 14, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef USER_MSG_H_
+#define USER_MSG_H_
+
+
+void hande_usermsg_login(handler_msg* msg,void* user_group);
+
+
+#endif /* USER_MSG_H_ */

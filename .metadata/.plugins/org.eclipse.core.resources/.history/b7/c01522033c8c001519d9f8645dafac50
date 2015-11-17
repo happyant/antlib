@@ -1,0 +1,63 @@
+/*
+ * db_table.h
+ *
+ *  Created on: 2014-10-11
+ *      Author: lx
+ */
+
+#ifndef DB_TABLE_H_
+#define DB_TABLE_H_
+
+//#include "dblib.h"
+//#include <stddef.h>
+//
+//enum enum_dbfield_type {
+//	DBFIELD_TYPE_INT8 = 0,
+//	DBFIELD_TYPE_INT16,
+//	DBFIELD_TYPE_INT32,
+//	DBFIELD_TYPE_INT64,
+//	DBFIELD_TYPE_STRING,
+//};
+//
+//#define REGIST_DBFIELD(field_name,c,m,size,type,table) \
+	dbtable_regist_field(table,field_name,size,offsetof(c,m),type,0)
+//
+//#define REGIST_DBFIELD_SECONDKEY(field_name,c,m,size,type,table) \
+//	dbtable_regist_field(table,field_name,size,offsetof(c,m),type,1)
+//
+//#define REGIST_DBFIELD_PRIMARY(field_name,c,m,size,type,table) \
+//	dbtable_regist_field(table,field_name,size,offsetof(c,m),type,2)
+//
+//struct db_field {
+//	char _field_name[32];
+//	int _size;
+//	int _offset;
+//	int _type;
+//};
+//
+//struct db_table {
+//	char _table_name[32];
+//	mydb* _db_ptr;
+//	struct db_field* _primary_key;
+//	struct db_field* _second_key;
+//	int _n;
+//	struct db_field _fields[1];
+//};
+//
+//struct db_table* dbtable_regist(mydb* db,const char* table_name,int field_num);
+////data_type:0 int32 ,1 int64,2 string
+////key_type:0 not key, 1 second key,2 primary key
+//void dbtable_regist_field(struct db_table* t,const char* field_name,int size,int offset,int data_type,int key_type);
+//
+//int dbtable_create(struct db_table* t);
+//int dbtable_destory(struct db_table* t);
+//
+//int dbtable_delete(struct db_table* t,const char* sql_where);
+//int dbtable_insert(struct db_table* t,void* data);
+//int dbtable_update(struct db_table* t,void* data,uint64_t bit);
+//
+//mydb_recordset* dbtable_select(struct db_table* t,const char* sql_where);
+//int dbtable_parser(struct db_table* t,mydb_recordset* rset,void* data);
+
+
+#endif /* DB_TABLE_H_ */

@@ -1,0 +1,37 @@
+timer.d timer.o: ../timer.c ../timer.h ../handler_msg.h \
+ ../../commandlib/command_header.h ../../commandlib/double_list.h \
+ ../../commandlib/sys_header.h ../../commandlib/alloc.h \
+ ../../commandlib/my_string.h ../../commandlib/locker.h \
+ ../../commandlib/atomic_lock.h ../../commandlib/my_time.h \
+ ../handlerlib.h ../handler.h ../../commandlib/hqueue.h \
+ ../../commandlib/squeue.h ../thread_data.h
+
+../timer.h:
+
+../handler_msg.h:
+
+../../commandlib/command_header.h:
+
+../../commandlib/double_list.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/alloc.h:
+
+../../commandlib/my_string.h:
+
+../../commandlib/locker.h:
+
+../../commandlib/atomic_lock.h:
+
+../../commandlib/my_time.h:
+
+../handlerlib.h:
+
+../handler.h:
+
+../../commandlib/hqueue.h:
+
+../../commandlib/squeue.h:
+
+../thread_data.h:

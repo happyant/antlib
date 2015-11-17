@@ -1,0 +1,68 @@
+/*
+ * http_protocol.h
+ *
+ *  Created on: Sep 18, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef HTTP_PROTOCOL_H_
+#define HTTP_PROTOCOL_H_
+
+#include "tcp_protocol_header.h"
+
+//////////////////////////////////////////////////////////
+
+static inline int create_http_request_get(char* buf,int len,char* path,char* host,char* values)
+{
+	const char* request_str = "GET %s?%s HTTP/1.1\r\nHost: %s\r\n\r\n";
+	int n = snprintf(buf,len,request_str,path,values,host);
+	ASSERT(n > 0 && n < len);
+	return n;
+}
+
+static inline int create_http_request_post(char* buf,int len,char* path,char* host,char* values,int values_len)
+{
+	if(values_len == -1){
+		values_len = strlen(values);
+	}else{
+		ASSERT(strlen(values) == values_len);
+	}
+	const char* request_str = "POST %s HTTP/1.1\r\nContent-Length: %d\r\nHost: %s\r\n\r\n%s";
+	int n = snprintf(buf,len,request_str,path,host,values_len,values);
+	ASSERT(n > 0 && n < len);
+	return n;
+}
+
+//////////////////////////////////////////////////////////
+//http server response
+
+/*	HTTP/1.1 404 Not Found\r\n
+ * 	Server:shenyv.com\r\n
+ * 	Content-Length: 111\r\n
+ * 	Connection: keep-alive\r\n
+ * 	\r\n
+ * 	values
+ * */
+
+
+
+
+//////////////////////////////////////////////////////////
+//http client request
+
+
+
+
+//////////////////////////////////////////////////////////
+//http client response
+
+
+
+
+
+
+
+
+
+
+#endif /* HTTP_PROTOCOL_H_ */

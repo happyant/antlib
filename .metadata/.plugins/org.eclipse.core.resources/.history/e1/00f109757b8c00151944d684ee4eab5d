@@ -1,0 +1,31 @@
+/*
+ * server_db.c
+ *
+ *  Created on: Nov 2, 2015
+ *      Author: zhaolixiang
+ */
+
+#include "server_db.h"
+#include "server_config.h"
+
+mydb* _g_myserver_dblist[2]= {0,0};
+
+
+void init_mydb(void* config,int no)
+{
+	ASSERT(no >= 0 && no <= 1 && _g_myserver_dblist[no] == 0);
+	const char* dbname = config_db_name(config,no);
+	const char* dbhost = config_db_host(config,no);
+	const char* dbuser = config_db_user(config,no);
+	const char* dbpswd = config_db_pswd(config,no);
+	int port = config_db_port(config,no);
+	int type = config_db_type(config,no);
+
+	_g_myserver_dblist[no] = open_mydb(type,dbhost,port,dbname,dbuser,dbpswd,39,0);
+}
+
+mydb* get_mydb(int no)
+{
+	ASSERT(no >= 0 && no <= 1 && _g_myserver_dblist[no]);
+	return _g_myserver_dblist[no];
+}

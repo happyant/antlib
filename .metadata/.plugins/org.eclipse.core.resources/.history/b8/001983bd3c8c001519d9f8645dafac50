@@ -1,0 +1,68 @@
+user_list.d user_list.o: ../user_list.c ../user_list.h \
+ ../../handlerlib/handlerlib.h ../../handlerlib/handler_msg.h \
+ ../../commandlib/command_header.h ../../commandlib/double_list.h \
+ ../../commandlib/sys_header.h ../../commandlib/alloc.h \
+ ../../commandlib/my_string.h ../../commandlib/locker.h \
+ ../../commandlib/atomic_lock.h ../../commandlib/my_time.h \
+ ../../handlerlib/timer.h ../user_msg.h ../../handlerlib/handler_msg.h \
+ ../../protocollib/tcp_msglist.h ../../protocollib/tcp_protocol_header.h \
+ ../../tcplib/tcp_header.h ../../commandlib/my_time.h \
+ ../../tcplib/tcp_connection.h ../../tcplib/tcp_queue.h \
+ ../../tcplib/tcp_header.h ../../tcplib/tcp_socket.h \
+ ../../commandlib/hash.h ../../commandlib/alloc.h \
+ ../../protocollib/tcp_stream.h ../net_protocol.h \
+ ../../commandlib/squeue.h
+
+../user_list.h:
+
+../../handlerlib/handlerlib.h:
+
+../../handlerlib/handler_msg.h:
+
+../../commandlib/command_header.h:
+
+../../commandlib/double_list.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/alloc.h:
+
+../../commandlib/my_string.h:
+
+../../commandlib/locker.h:
+
+../../commandlib/atomic_lock.h:
+
+../../commandlib/my_time.h:
+
+../../handlerlib/timer.h:
+
+../user_msg.h:
+
+../../handlerlib/handler_msg.h:
+
+../../protocollib/tcp_msglist.h:
+
+../../protocollib/tcp_protocol_header.h:
+
+../../tcplib/tcp_header.h:
+
+../../commandlib/my_time.h:
+
+../../tcplib/tcp_connection.h:
+
+../../tcplib/tcp_queue.h:
+
+../../tcplib/tcp_header.h:
+
+../../tcplib/tcp_socket.h:
+
+../../commandlib/hash.h:
+
+../../commandlib/alloc.h:
+
+../../protocollib/tcp_stream.h:
+
+../net_protocol.h:
+
+../../commandlib/squeue.h:

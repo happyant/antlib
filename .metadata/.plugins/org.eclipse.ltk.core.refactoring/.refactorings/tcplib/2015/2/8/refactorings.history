@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;tcplib/tcp_stream_list.c&apos; to &apos;tcp_stream_pool.c&apos;" description="Rename resource &apos;tcp_stream_list.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="tcp_stream_list.c" name="tcp_stream_pool.c" stamp="1424068660156" updateReferences="true"/>
+</session>

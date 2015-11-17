@@ -1,0 +1,93 @@
+/*
+ * tcp_protocol_http.c
+ *
+ *  Created on: May 24, 2015
+ *      Author: zhaolixiang
+ */
+
+#include "tcp_protocol_http.h"
+
+//////////////////////////////////////////////////////////////////////////////
+
+void tcp_protocolhttp_debug(struct tcp_connection* c)
+{
+	//todo:
+}
+
+int tcp_protocolhttp_buflen(struct tcp_connection* c)
+{
+	if(_TPE_MSGID == 0)
+	{
+		return 0;
+	}
+	return HTTP_HEAD_LENGTH;
+}
+
+char* tcp_protocolhttp_buf(struct tcp_connection* c)
+{
+	tcp_stream* s = (tcp_stream*)_TPE_STREAM;
+	if(NULL == s)
+	{
+		s = create_tcpstream(c->_id._i64,0);
+		_TPE_STREAM = s;
+		_TPE_MSGID = 0;
+		_TPE_RECEIVED = 0;
+	}
+	ASSERT(_TPE_RECEIVED + 0 < NETSTREAM_BUFLEN);
+	return s->_buf + 0 + _TPE_RECEIVED;
+}
+
+void tcp_protocolhttp_connected(int result,struct tcp_connection* c)
+{
+	if(result != 0) {
+		return;
+	}
+	ASSERT(NULL == _TPE_STREAM);
+	_TPE_USERID = 0;
+}
+
+void tcp_protocolhttp_received(int len,struct tcp_connection* c)
+{
+}
+
+void tcp_protocolhttp_domsg(handler_msg* msg,struct tcp_connection* c)
+{
+	tcpconnection_add_msg(c,msg);
+}
+
+void tcp_protocolhttp_sendover(handler_msg* msg,struct tcp_connection* c)
+{
+	free_handler_msg(msg);
+}
+
+void tcp_protocolhttp_closed(struct tcp_connection* c)
+{
+	if(_TPE_STREAM)
+	{
+		free_tcpstream(_TPE_STREAM);
+		_TPE_STREAM = NULL;
+	}
+	//Add your code here,if you want,at connection closed.
+	//Be careful,because this be called in net thread.
+	//Add you must keep the threads safe.
+	//.....
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+
+void create_tcpprotocol_http(tcp_protocol* p)
+{
+	p->_debug = tcp_protocolhttp_debug;
+	p->_get_buf = tcp_protocolhttp_buf;
+	p->_get_buf_len = tcp_protocolhttp_buflen;
+	p->_connected = tcp_protocolhttp_connected;
+	p->_recv_data = tcp_protocolhttp_received;
+	p->_do_send_msg = tcp_protocolhttp_domsg;
+	p->_send_msg_over = tcp_protocolhttp_sendover;
+	p->_closed = tcp_protocolhttp_closed;
+	p->_protocol_name = "protocol_http";
+}
+void distory_tcpprotocol_http()
+{
+
+}

@@ -1,0 +1,56 @@
+/*
+ * http_protocol.h
+ *
+ *  Created on: Sep 18, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef HTTP_PROTOCOL_H_
+#define HTTP_PROTOCOL_H_
+
+//////////////////////////////////////////////////////////
+//http server request
+
+/*	GET /path1/path2?k1=v1&k2=v2 HTTP1.1\r\n
+ *	Range:0-1000\r\n
+ *	\r\n
+ * */
+
+
+/* POST /path1/path2 HTTP1.1\r\n
+ * Context_length: 100\r\n
+ * \r\n
+ * k1=v1&k2=v2
+ *
+ * */
+
+
+
+//////////////////////////////////////////////////////////
+//http server response
+
+/*
+ * */
+
+
+
+
+//////////////////////////////////////////////////////////
+//http client request
+
+
+
+
+//////////////////////////////////////////////////////////
+//http client response
+
+
+
+
+
+
+
+
+
+
+#endif /* HTTP_PROTOCOL_H_ */

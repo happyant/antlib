@@ -1,0 +1,28 @@
+/*
+ * net_protocol.h
+ *
+ *  Created on: Oct 26, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef NET_PROTOCOL_H_
+#define NET_PROTOCOL_H_
+
+enum netprotocol_type
+{
+	NETPROTOCOL_TYPE_HTTP = 0,
+	NETPROTOCOL_TYPE_TCP4,
+	NETPROTOCOL_TYPE_TCP12,
+	NETPROTOCOL_TYPE_HTTP_FLASH,
+	NETPROTOCOL_TYPE_TCP_FLASH,
+
+
+	NETPROTOCOL_TYPE_TCP_MAX
+};
+
+
+int bind_netprotocol(const char* ip,int port,enum netprotocol_type type);
+
+
+
+#endif /* NET_PROTOCOL_H_ */

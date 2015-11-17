@@ -1,0 +1,15 @@
+server_script_lua.d server_script_lua.o: ../server_script_lua.c \
+ ../server_script_lua.h ../../lualib/lua.h ../../lualib/luaconf.h \
+ ../../lualib/lauxlib.h ../../lualib/lua.h ../../lualib/lualib.h
+
+../server_script_lua.h:
+
+../../lualib/lua.h:
+
+../../lualib/luaconf.h:
+
+../../lualib/lauxlib.h:
+
+../../lualib/lua.h:
+
+../../lualib/lualib.h:

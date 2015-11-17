@@ -1,0 +1,45 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../alloc.c \
+../encry_book.c \
+../hash.c \
+../ini_reader.c \
+../md5.c \
+../my_time.c \
+../sha1.c \
+../squeue.c 
+
+OBJS += \
+./alloc.o \
+./encry_book.o \
+./hash.o \
+./ini_reader.o \
+./md5.o \
+./my_time.o \
+./sha1.o \
+./squeue.o 
+
+C_DEPS += \
+./alloc.d \
+./encry_book.d \
+./hash.d \
+./ini_reader.d \
+./md5.d \
+./my_time.d \
+./sha1.d \
+./squeue.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+%.o: ../%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -D_DEBUG_ALLOC -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

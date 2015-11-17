@@ -1,0 +1,45 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../commandlib/alloc.c \
+../commandlib/encry_book.c \
+../commandlib/hash.c \
+../commandlib/ini_reader.c \
+../commandlib/md5.c \
+../commandlib/my_time.c \
+../commandlib/sha1.c \
+../commandlib/squeue.c 
+
+OBJS += \
+./commandlib/alloc.o \
+./commandlib/encry_book.o \
+./commandlib/hash.o \
+./commandlib/ini_reader.o \
+./commandlib/md5.o \
+./commandlib/my_time.o \
+./commandlib/sha1.o \
+./commandlib/squeue.o 
+
+C_DEPS += \
+./commandlib/alloc.d \
+./commandlib/encry_book.d \
+./commandlib/hash.d \
+./commandlib/ini_reader.d \
+./commandlib/md5.d \
+./commandlib/my_time.d \
+./commandlib/sha1.d \
+./commandlib/squeue.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+commandlib/%.o: ../commandlib/%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -I../../ -I"/home/zhaolixiang/workspace/handler/antlib" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

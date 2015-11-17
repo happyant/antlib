@@ -1,0 +1,8 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+USER_OBJS :=
+
+LIBS := -ldblib -lprotocollib -ltcplib -lhandlerlib -lcommandlib -lmysqlclient -lpthread
+

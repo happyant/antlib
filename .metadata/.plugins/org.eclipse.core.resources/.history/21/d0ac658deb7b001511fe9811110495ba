@@ -1,0 +1,18 @@
+/*
+ * net_protocol.h
+ *
+ *  Created on: Oct 26, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef NET_PROTOCOL_H_
+#define NET_PROTOCOL_H_
+
+
+tcp_protocol* server_protocol_http_create(char buf[4]);
+void server_protocol(tcp_protocol* p);
+
+
+
+
+#endif /* NET_PROTOCOL_H_ */

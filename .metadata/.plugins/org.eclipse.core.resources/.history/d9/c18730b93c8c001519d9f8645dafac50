@@ -1,0 +1,39 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../tcp_connection.c \
+../tcp_connection_list.c \
+../tcp_epoll.c \
+../tcp_listener.c \
+../tcp_listener_list.c \
+../tcplib.c 
+
+OBJS += \
+./tcp_connection.o \
+./tcp_connection_list.o \
+./tcp_epoll.o \
+./tcp_listener.o \
+./tcp_listener_list.o \
+./tcplib.o 
+
+C_DEPS += \
+./tcp_connection.d \
+./tcp_connection_list.d \
+./tcp_epoll.d \
+./tcp_listener.d \
+./tcp_listener_list.d \
+./tcplib.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+%.o: ../%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

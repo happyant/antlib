@@ -1,0 +1,85 @@
+/*
+ * http_protocol.h
+ *
+ *  Created on: Sep 18, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef HTTP_PROTOCOL_H_
+#define HTTP_PROTOCOL_H_
+
+//////////////////////////////////////////////////////////
+//http server request
+
+/*	GET /path1/path2?k1=v1&k2=v2 HTTP/1.1\r\n
+ *  Host: localhost\r\n
+ *	Range:0-1000\r\n
+ *	Keep-Alive: 300\r\n
+ *	Connection: keep-alive\r\n
+ *	\r\n
+ * */
+
+static inline int create_http_request_get(char* buf,int len,char* path,char* values,char* host)
+{
+	const char* request_str = "GET %s?%s HTTP/1.1\r\nHost: %s\r\nConnection: keep-alive\r\n\r\n";
+	int n = snprintf(buf,len,request_str,path,values,host);
+	ASSERT(n > 0 && n < len);
+	return n;
+}
+
+
+/* POST /path1/path2 HTTP/1.1\r\n
+ * Content-Length: 100\r\n
+ * \r\n
+ * k1=v1&k2=v2
+ * */
+static inline int create_http_request_post(char* buf,int len,char* path,char* values,int value_len,char* host)
+{
+	if(value_len == -1) {
+		value_len = strlen(values);
+	}
+	const char* request_str = "POST %s HTTP/1.1\r\n"
+			"Host: %s\r\n"
+			"Content-Length: %d\r\n"
+			"Connection: keep-alive\r\n"
+			"\r\n"
+			"%s";
+	int n = snprintf(buf,len,request_str,path,values,host);
+	ASSERT(n > 0 && n < len);
+	return n;
+
+}
+
+//////////////////////////////////////////////////////////
+//http server response
+
+/*	HTTP/1.1 404 Not Found\r\n
+ * 	Server:shenyv.com\r\n
+ * 	Content-Length: 111\r\n
+ * 	Connection: keep-alive\r\n
+ * 	\r\n
+ * 	values
+ * */
+
+
+
+
+//////////////////////////////////////////////////////////
+//http client request
+
+
+
+
+//////////////////////////////////////////////////////////
+//http client response
+
+
+
+
+
+
+
+
+
+
+#endif /* HTTP_PROTOCOL_H_ */

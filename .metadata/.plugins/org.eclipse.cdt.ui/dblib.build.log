@@ -1,0 +1,25 @@
+
+**** Build of configuration Debug for project dblib ****
+
+make all 
+Building file: ../db_factory.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"db_factory.d" -MT"db_factory.d" -o"db_factory.o" "../db_factory.c"
+Finished building: ../db_factory.c
+ 
+Building file: ../dblib.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"dblib.d" -MT"dblib.d" -o"dblib.o" "../dblib.c"
+Finished building: ../dblib.c
+ 
+Building file: ../mysql_con.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"mysql_con.d" -MT"mysql_con.d" -o"mysql_con.o" "../mysql_con.c"
+Finished building: ../mysql_con.c
+ 
+Building target: libdblib.a
+Invoking: GCC Archiver
+ar -r "libdblib.a"  ./db_factory.o ./dblib.o ./mysql_con.o   
+ar: creating libdblib.a
+Finished building target: libdblib.a
+ 

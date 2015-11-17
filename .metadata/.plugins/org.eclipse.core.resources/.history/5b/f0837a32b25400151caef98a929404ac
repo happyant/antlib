@@ -1,0 +1,30 @@
+/*
+ * loglib.h
+ *
+ *  Created on: 2014-10-10
+ *      Author: lx
+ */
+
+#ifndef LOGLIB_H_
+#define LOGLIB_H_
+
+
+
+#define ERRORLOG(format,...) write_log("[error] %u "format,(uint32_t)time(0),##__VA_ARGS__)
+#define WARNLOG(format,...) write_log("[warning] %u "format,(uint32_t)time(0),##__VA_ARGS__)
+#define INFOLOG(format,...) write_log("[info] %u "format,(uint32_t)time(0),##__VA_ARGS__)
+#define DEBUGLOG(format,...) write_log("[debug] %u "format,(uint32_t)time(0),##__VA_ARGS__)
+
+
+
+void init_loglib(int handler_poolid,const char* logname_pre);
+
+
+void uninit_loglib();
+
+
+int write_log(const char* log,...);
+
+
+
+#endif /* LOGLIB_H_ */

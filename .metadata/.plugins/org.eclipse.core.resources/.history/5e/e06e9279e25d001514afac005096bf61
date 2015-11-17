@@ -1,0 +1,26 @@
+/*
+ * http_protocol.c
+ *
+ *  Created on: Sep 18, 2015
+ *      Author: zhaolixiang
+ */
+
+#include "http_protocol.h"
+
+char _g_http_path_words[128];
+
+void init_http_path_words()
+{
+	memset(_g_http_path_words,0,sizeof(_g_http_path_words));
+	int i;
+	for(i = 'a'; i <= 'z'; ++i){
+		_g_http_path_words[i] = 1;
+	}
+	for(i = 'A'; i <= 'Z'; ++i){
+		_g_http_path_words[i] = 1;
+	}
+	for(i = '0'; i <= 'Z'; ++i){
+		_g_http_path_words[i] = 1;
+	}
+}
+

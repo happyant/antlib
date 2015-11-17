@@ -1,0 +1,30 @@
+/*
+ * log_ep.c
+ *
+ *  Created on: 2014-10-10
+ *      Author: lx
+ */
+
+#include "log_ep.h"
+#include "../loglib.h"
+#include "../log_header.h"
+
+
+int log_example()
+{
+	handlerlib_initpm pm;
+	memset(&pm,0,sizeof(pm));
+	pm._harborid = 1;
+	pm._pools[0]._thread_count = 1;
+	init_handlerlib(&pm);
+
+	init_loglib(0,"log");
+
+	ERRORLOG("test %d",1);
+
+	start_all_handlers();
+
+	uninit_loglib();
+	uninit_handlerlib();
+	return 0;
+}

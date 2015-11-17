@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;tcplib/tcp_usermsg_list.c&apos; to &apos;tcp_msg_list.c&apos;" description="Rename resource &apos;tcp_usermsg_list.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="tcp_usermsg_list.c" name="tcp_msg_list.c" stamp="1444319341825" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;tcplib/tcp_usermsg_list.h&apos; to &apos;tcp_msg_list.h&apos;" description="Rename resource &apos;tcp_usermsg_list.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="tcp_usermsg_list.h" name="tcp_msg_list.h" stamp="1444319352232" updateReferences="true"/>
+</session>

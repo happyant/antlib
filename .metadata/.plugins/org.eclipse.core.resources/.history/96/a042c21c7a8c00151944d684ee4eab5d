@@ -1,0 +1,39 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+C_SRCS += \
+../tcplib/tcp_connection.c \
+../tcplib/tcp_connection_list.c \
+../tcplib/tcp_epoll.c \
+../tcplib/tcp_listener.c \
+../tcplib/tcp_listener_list.c \
+../tcplib/tcplib.c 
+
+OBJS += \
+./tcplib/tcp_connection.o \
+./tcplib/tcp_connection_list.o \
+./tcplib/tcp_epoll.o \
+./tcplib/tcp_listener.o \
+./tcplib/tcp_listener_list.o \
+./tcplib/tcplib.o 
+
+C_DEPS += \
+./tcplib/tcp_connection.d \
+./tcplib/tcp_connection_list.d \
+./tcplib/tcp_epoll.d \
+./tcplib/tcp_listener.d \
+./tcplib/tcp_listener_list.d \
+./tcplib/tcplib.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+tcplib/%.o: ../tcplib/%.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: GCC C Compiler'
+	gcc -I../../ -I"/home/zhaolixiang/workspace/handler/antlib" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o"$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+

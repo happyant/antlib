@@ -1,0 +1,56 @@
+
+**** Build of configuration Debug for project gamesvr ****
+
+make all 
+Building file: ../login_netmsg.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"login_netmsg.d" -MT"login_netmsg.d" -o"login_netmsg.o" "../login_netmsg.c"
+Finished building: ../login_netmsg.c
+ 
+Building file: ../main.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"main.d" -MT"main.d" -o"main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building file: ../net_protocol.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"net_protocol.d" -MT"net_protocol.d" -o"net_protocol.o" "../net_protocol.c"
+Finished building: ../net_protocol.c
+ 
+Building file: ../server.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"server.d" -MT"server.d" -o"server.o" "../server.c"
+Finished building: ../server.c
+ 
+Building file: ../server_config.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"server_config.d" -MT"server_config.d" -o"server_config.o" "../server_config.c"
+Finished building: ../server_config.c
+ 
+Building file: ../server_db.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"server_db.d" -MT"server_db.d" -o"server_db.o" "../server_db.c"
+Finished building: ../server_db.c
+ 
+Building file: ../server_master.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"server_master.d" -MT"server_master.d" -o"server_master.o" "../server_master.c"
+Finished building: ../server_master.c
+ 
+Building file: ../server_script_lua.c
+Invoking: GCC C Compiler
+gcc -I../../ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"server_script_lua.d" -MT"server_script_lua.d" -o"server_script_lua.o" "../server_script_lua.c"
+../server_script_lua.c: In function ‘myscriptlua_regist_msg’:
+../server_script_lua.c:27: warning: unused variable ‘id’
+../server_script_lua.c:21: warning: unused variable ‘func’
+../server_script_lua.c:20: warning: unused variable ‘file’
+../server_script_lua.c:17: warning: unused variable ‘path’
+Finished building: ../server_script_lua.c
+ 
+Building target: gamesvr
+Invoking: GCC C Linker
+gcc -L"/home/zhaolixiang/workspace/handler/dblib/mysql" -L"/home/zhaolixiang/workspace/handler/lualib/Debug" -L"/home/zhaolixiang/workspace/handler/lualib/Debug" -L"/home/zhaolixiang/workspace/handler/tcplib/Debug" -L"/home/zhaolixiang/workspace/handler/protocollib/Debug" -L"/home/zhaolixiang/workspace/handler/commandlib/Debug" -L"/home/zhaolixiang/workspace/handler/dblib/Debug" -L"/home/zhaolixiang/workspace/handler/handlerlib/Debug" -L"/home/zhaolixiang/workspace/handler/tcplib/Debug" -o"gamesvr"  ./login_netmsg.o ./main.o ./net_protocol.o ./server.o ./server_config.o ./server_db.o ./server_master.o ./server_script_lua.o   -ldblib -lprotocollib -ltcplib -lhandlerlib -lcommandlib -llualib -lmysqlclient -lpthread
+/home/zhaolixiang/workspace/handler/lualib/Debug/liblualib.a(loslib.o): In function `os_tmpname':
+/home/zhaolixiang/workspace/handler/lualib/Debug/../loslib.c:108: warning: the use of `tmpnam' is dangerous, better use `mkstemp'
+Finished building target: gamesvr
+ 

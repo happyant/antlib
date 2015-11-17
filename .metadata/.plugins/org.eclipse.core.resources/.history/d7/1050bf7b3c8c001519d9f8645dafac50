@@ -1,0 +1,16 @@
+alloc.d alloc.o: ../alloc.c ../alloc.h ../sys_header.h ../my_string.h \
+ ../double_list.h ../locker.h ../atomic_lock.h ../my_time.h
+
+../alloc.h:
+
+../sys_header.h:
+
+../my_string.h:
+
+../double_list.h:
+
+../locker.h:
+
+../atomic_lock.h:
+
+../my_time.h:

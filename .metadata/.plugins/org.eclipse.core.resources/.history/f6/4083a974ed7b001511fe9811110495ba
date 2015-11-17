@@ -1,0 +1,47 @@
+/*
+ * net_protocol.c
+ *
+ *  Created on: Oct 26, 2015
+ *      Author: zhaolixiang
+ */
+#include "net_protocol.h"
+#include "tcplib/tcplib.h"
+
+
+void server_protocol_destory(tcp_protocol* p);
+
+
+tcp_protocol* server_protocol_http_create(char buf[4]);
+
+tcp_protocol* server_protocol_http_create(char buf[4]);
+
+tcp_protocol* server_protocol_http_create(char buf[4]);
+
+
+void server_protocol_destory(tcp_protocol* p)
+{
+
+}
+
+//int tcp_listenport(const char* ip,int port,create_protocol createf,destory_protocol destoryf);
+
+
+int bind_netprotocol(const char* ip,int port,enum netprotocol_type type)
+{
+	int reault = -1;
+	switch(type)
+	{
+	case NETPROTOCOL_TYPE_HTTP:
+		tcp_listenport()
+		break;
+	case NETPROTOCOL_TYPE_TCP4:
+		break;
+	case NETPROTOCOL_TYPE_TCP12:
+		break;
+	case NETPROTOCOL_TYPE_HTTP_FLASH:
+		break;
+	case NETPROTOCOL_TYPE_TCP_FLASH:
+		break;
+	default:return -1;
+	}
+}

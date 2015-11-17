@@ -1,0 +1,153 @@
+/*
+ * http_protocol.c
+ *
+ *  Created on: Sep 18, 2015
+ *      Author: zhaolixiang
+ */
+
+#include "http_protocol.h"
+
+static char HEX_STR[] = "0123456789ABCDEF";
+char _g_http_path_words[128];
+
+
+void init_http_path_words()
+{
+	memset(_g_http_path_words,0,sizeof(_g_http_path_words));
+	int i;
+	for(i = 'a'; i <= 'z'; ++i){
+		_g_http_path_words[i] = 1;
+	}
+	for(i = 'A'; i <= 'Z'; ++i){
+		_g_http_path_words[i] = 1;
+	}
+	for(i = '0'; i <= '9'; ++i){
+		_g_http_path_words[i] = 1;
+	}
+	_g_http_path_words['/'] = 1;
+	_g_http_path_words['_'] = 1;
+}
+
+int escape2str(const char* str,int len,char* res,int res_len)
+{
+	int i = 0,j = 0;
+	while(i < len)
+	{
+		if(*str != '%')
+		{
+			res[j++] = *str;
+			++i;
+			++str;
+		}
+		else
+		{
+			if(i >= len-2 || j >= res_len)
+				return -1;
+			i += 3;
+			++str;
+
+			if(*str >= '0' && *str <= '9')
+				res[j] = (*str-'0')<<4;
+			else if(*str >= 'A' && *str <= 'Z')
+				res[j] = (*str-'A')<<4;
+			else if(*str >= 'a' && *str <= 'z')
+				res[j] = (*str-'a')<<4;
+			else
+				return -1;
+			++str;
+			if(*str >= '0' && *str <= '9')
+				res[j] = (*str-'0')<<4;
+			else if(*str >= 'A' && *str <= 'Z')
+				res[j] = (*str-'A')<<4;
+			else if(*str >= 'a' && *str <= 'z')
+				res[j] = (*str-'a')<<4;
+			else
+				return -1;
+			++str;
+			++j;
+		}
+	}
+}
+
+int str2escape(const char* str,int len,char* res,int res_len)
+{
+	int i = 0,j = 0;
+	for(;i < len; ++i)
+	{
+		if(!(*str >= '0' && *str <= '9')
+			&& !(*str >= 'a' && *str <= 'z')
+			&& !(*str >= 'A' && *str <= 'Z'))
+		{
+			if(j+3 >= res_len)
+				return -1;
+			res[j] = '%';
+			res[j++] = HEX_STR[(*str & 0xF0)>>4];
+			res[j++] = HEX_STR[(*str & 0x0F)];
+		}
+		else
+		{
+			if(j+1 >= res_len)
+				return -1;
+			res[j++] = *str;
+		}
+		++str;
+	}
+	if(j < res_len)
+	{
+		res[j] = 0;
+		return j;
+	}
+	return -1;
+}
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+//result:-1 error, 0 not all path, > 0 the path end offset
+static inline int get_http_request_get_path(char* buf,int len,char** path)
+{
+	if(len < 5){return 0;}
+	int i = 4;
+	while(++i < len)
+	{
+		if(buf[i] == '?') {
+			*path = buf+5;
+			buf[i] = 0;
+			return i+1;
+		}
+		if(check_http_path_word(buf[i]) == 0) {
+			return -1;
+		}
+	}
+	return 0;
+}
+
+static inline int get_http_request_get_values(char* buf,int len,char** vl)
+{
+	int i = 0;
+	while(i < len)
+	{
+		if(buf[i] == ' ') {
+			if(i + 10 >= len)	//HTTP/1.1\r\n  10
+				return 0;
+			if(buf[i+10] != '\n')
+				return -1;
+			*vl =  buf;
+			buf[i] = 0;
+			return i+11;
+		}
+		++i;
+	}
+	return 0;
+}
+static inline int get_http_request_get_end(char* buf,int len,int* is_end)
+{
+	int i = 0;
+	while(i < len)
+	{
+
+		++i;
+	}
+}

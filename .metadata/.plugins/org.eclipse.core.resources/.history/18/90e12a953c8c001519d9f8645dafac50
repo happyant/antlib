@@ -1,0 +1,25 @@
+server_db.d server_db.o: ../server_db.c ../server_db.h \
+ ../../dblib/dblib.h ../../dblib/db_header.h ../../commandlib/alloc.h \
+ ../../commandlib/sys_header.h ../../commandlib/double_list.h \
+ ../../commandlib/sys_header.h ../../commandlib/atomic_lock.h \
+ ../../commandlib/my_time.h ../server_config.h
+
+../server_db.h:
+
+../../dblib/dblib.h:
+
+../../dblib/db_header.h:
+
+../../commandlib/alloc.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/double_list.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/atomic_lock.h:
+
+../../commandlib/my_time.h:
+
+../server_config.h:

@@ -1,0 +1,15 @@
+
+**** Build of configuration Debug for project antlib ****
+
+make all 
+Building file: ../dblib/dblib.c
+Invoking: GCC C Compiler
+gcc -I../../ -I"/home/zhaolixiang/workspace/handler/antlib" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"dblib/dblib.d" -MT"dblib/dblib.d" -o"dblib/dblib.o" "../dblib/dblib.c"
+ar: creating libantlib.a
+Finished building: ../dblib/dblib.c
+ 
+Building target: libantlib.a
+Invoking: GCC Archiver
+ar -r "libantlib.a"  ./tcplib/tcp_connection.o ./tcplib/tcp_connection_list.o ./tcplib/tcp_epoll.o ./tcplib/tcp_listener.o ./tcplib/tcp_listener_list.o ./tcplib/tcplib.o  ./protocollib/http_protocol.o ./protocollib/protocollib.o ./protocollib/tcp_clientgroup.o ./protocollib/tcp_msglist.o ./protocollib/tcp_protocol.o ./protocollib/tcp_protocol12.o ./protocollib/tcp_protocol4.o ./protocollib/tcp_protocol_flash.o ./protocollib/tcp_protocol_http.o ./protocollib/tcp_stream.o  ./handlerlib/handler.o ./handlerlib/handler_msg.o ./handlerlib/handlerlib.o ./handlerlib/loger.o ./handlerlib/thread.o ./handlerlib/thread_data.o ./handlerlib/timer.o  ./dblib/db_factory.o ./dblib/dblib.o ./dblib/mysql_con.o  ./commandlib/alloc.o ./commandlib/encry_book.o ./commandlib/hash.o ./commandlib/ini_reader.o ./commandlib/md5.o ./commandlib/my_time.o ./commandlib/sha1.o ./commandlib/squeue.o   
+Finished building target: libantlib.a
+ 

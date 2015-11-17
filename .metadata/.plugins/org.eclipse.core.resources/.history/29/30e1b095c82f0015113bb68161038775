@@ -1,0 +1,20 @@
+/*
+ * tcp_protocol_flash.h
+ *
+ *  Created on: May 24, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef TCP_PROTOCOL_FLASH_H_
+#define TCP_PROTOCOL_FLASH_H_
+
+
+#include "../tcp_header.h"
+
+
+void create_tcpprotocol_flash(tcp_protocol* p);
+
+void distory_tcpprotocol_flash();
+
+
+#endif /* TCP_PROTOCOL_FLASH_H_ */

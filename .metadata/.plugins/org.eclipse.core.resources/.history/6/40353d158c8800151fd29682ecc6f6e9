@@ -1,0 +1,20 @@
+/*
+ * user_list.h
+ *
+ *  Created on: Nov 11, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef USER_LIST_H_
+#define USER_LIST_H_
+
+//a~z0~9_@.
+void userlist_init(int handler_group,int handler_num,int user_cache_max);
+
+void userlist_uninit();
+
+//void pushmsg_byuserid(uint64_t userid,handler_msg* msg);
+void pushmsg_byusername(const char* name,handler_msg* msg);
+
+
+#endif /* USER_LIST_H_ */

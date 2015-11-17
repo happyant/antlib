@@ -1,0 +1,32 @@
+/*
+ * net_protocol.h
+ *
+ *  Created on: Oct 31, 2015
+ *      Author: zhaolixiang
+ */
+
+#ifndef NET_PROTOCOL_H_
+#define NET_PROTOCOL_H_
+
+
+void init_netprotocol();
+
+
+#define USERMSG_LOGIN 			TCPMSGID(1,1)
+#define USERMSG_LOGIN_KEY "user/login"
+
+#define USERMSG_CHECK 			TCPMSGID(1,3)
+#define USERMSG_CHECK_KEY "user/check"
+
+#define USERMSG_ADD 		TCPMSGID(1,5)
+#define USERMSG_ADD_KEY "user/add"
+
+#define USERMSG_UPDATE 		TCPMSGID(1,7)
+#define USERMSG_UPDATE_KEY "user/update"
+
+#define USERMSG_UPDATEPASSWORD 	TCPMSGID(1,9)
+#define USERMSG_UPDATEPASSWORD_KEY "user/password"
+
+
+
+#endif /* NET_PROTOCOL_H_ */

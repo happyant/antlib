@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;protocollib/tcp_msg_list.c&apos; to &apos;tcp_msglist.c&apos;" description="Rename resource &apos;tcp_msg_list.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="tcp_msg_list.c" name="tcp_msglist.c" stamp="1445332510841" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;protocollib/tcp_msg_list.h&apos; to &apos;tcp_msglist.h&apos;" description="Rename resource &apos;tcp_msg_list.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="tcp_msg_list.h" name="tcp_msglist.h" stamp="1445332517762" updateReferences="true"/>
+</session>

@@ -1,0 +1,321 @@
+/*
+ * inireader.h
+ *
+ *  Created on: 2014-10-17
+ *      Author: lx
+ */
+
+#ifndef INIREADER_H_
+#define INIREADER_H_
+
+
+
+
+
+
+
+
+
+/*
+class ms_configer:ALLOC_BASE
+{
+	struct config_node:ALLOC_BASE
+	{
+		char _str[1024];
+		char* _key;
+		char* _value;
+	};
+	typedef std::map<const char*,config_node*,strkey_map_compare> node_map;
+
+	struct config_section:ALLOC_BASE
+	{
+		char _section[256];
+		node_map _nodes_map;
+	};
+	typedef std::map<const char*,config_section*,strkey_map_compare> section_map;
+
+public:
+	ms_configer();
+	~ms_configer();
+
+	int read(const char* path);
+
+	const char* get_value(const char* section,const char* key);
+	int get_value_int(const char* section,const char* key,int default_value=0);
+	const char* get_value_string(const char* section,const char* key,const char* default_value="");
+
+private:
+	int add_section(config_section* section);
+	const char* parse_section(char* buf,int len);
+	int add_node(const char* section,config_node* node);
+	int parse_node(const char* section,char* buf,int len);
+private:
+	section_map _sections_map;
+};
+
+
+extern ms_configer* get_config(const char* file_path="");
+extern void free_config();
+
+ * class ini_filer
+{
+public:
+	ini_filer(const char* path)
+	{
+		_fd = fopen(path,"r");
+	}
+
+	~ini_filer()
+	{
+		if(_fd)fclose(_fd);
+	}
+
+	int read_line(char *buf, int buf_len)
+	{
+		int len = _read_line(buf,buf_len);
+		if(len <= 0)
+		{
+			return len;
+		}
+		int j = 0;
+
+		int keep_blank = 0;
+		for(int i= 0; i < len;i++)
+		{	//remove ' ' & '\t' before of value
+			if(keep_blank == 2 || (buf[i] != ' ' && buf[i] != '\t'))
+			{
+				buf[j++] = buf[i];
+			}
+			if(buf[i] == '=' || (keep_blank == 1 && buf[i] != ' ' && buf[i] != '\t'))
+			{
+				++keep_blank;
+			}
+		}
+
+		while(j > 1)
+		{	//remove tail ' '& '\t'
+			if(buf[j-1] != ' ' && buf[j-1] != '\t')
+			{
+				break;
+			}
+			--j;
+		}
+
+		buf[j] = 0;
+		return j;
+	}
+
+private:
+	int _read_line(char *buf, int len)
+	{
+		if(_fd == NULL) {return -1;}
+		int i, j;
+		char ch;
+		for(i = 0, j = 0; i < len; j++)
+	    {
+			if( fread(&ch,sizeof(char),1,_fd) != 1 )
+	        {
+				if(feof(_fd) != 0 && j > 0) //read file tail
+					break;
+				return -2;
+	        }
+			else
+	        {
+				if(ch == '\n' || ch == 0x00)//line end
+					break;
+				if(ch == '\r')//nothing to do,when is '\r'
+					continue;
+				buf[i++] = ch;
+	        }
+	    }
+		buf[i] = '\0';
+		return i;
+	}
+private:
+	FILE* _fd;
+};
+
+
+////////////////////////////////////////////////////////////////////////////
+//class ms_configer
+////////////////////////////////////////////////////////////////////////////
+
+ms_configer::ms_configer()
+{
+
+}
+
+ms_configer::~ms_configer()
+{
+	node_map::iterator nit;
+	section_map::iterator sit;
+	for(sit = _sections_map.begin();sit != _sections_map.end();sit++)
+	{
+		node_map& nmap = sit->second->_nodes_map;
+		for(nit=nmap.begin(); nit != nmap.end(); nit++)
+		{
+			delete nit->second;
+		}
+		nmap.clear();
+		delete sit->second;
+	}
+	_sections_map.clear();
+}
+
+int ms_configer::read(const char* path)
+{
+	ini_filer file(path);
+	const char* section=NULL;
+	char buf[1024];
+	int len;
+	while(true)
+	{
+		len = file.read_line(buf,sizeof(buf));
+		if(len < 0) {break;}
+		if(len == 0){continue;}
+		if(buf[0] == '[')
+		{
+			section = parse_section(buf,len);
+		}
+		else if(buf[0] == '#')
+		{
+			continue;
+		}
+		else if(section)
+		{
+			parse_node(section,buf,len);
+		}
+	}
+	return 0;
+}
+
+int ms_configer::parse_node(const char* section,char* buf,int len)
+{
+	int i = 0;
+	int j = 0;
+	int result = 0;
+	config_node* node  = fnew config_node;
+	char* ptr = node->_str;
+	node->_key = node->_str;
+	while(i < len)
+	{
+		if(buf[i] == '=')
+		{
+			ptr[j++] = 0;
+			ptr = &(ptr[j]);
+			j = 0;
+			++result;
+		}
+		else
+		{
+			ptr[j++] = buf[i];
+		}
+		++i;
+	}
+	if(result == 1)
+	{
+		ptr[j] = 0;
+		node->_value = ptr;
+		add_node(section,node);
+	}
+	else
+	{
+		delete node;
+	}
+	return 0;
+}
+
+const char* ms_configer::parse_section(char* buf,int len)
+{
+	int i = 1;
+	while(i < len)
+	{
+		if(buf[i] == ']')
+		{
+			buf[i] = 0;
+			break;
+		}
+		++i;
+	}
+	if(i >= len)
+	{
+		return NULL;
+	}
+	config_section* section = fnew config_section;
+	strncpy(section->_section,buf+1,sizeof(section->_section)-1);
+	add_section(section);
+	return section->_section;
+}
+
+
+
+const char* ms_configer::get_value(const char* section,const char* key)
+{
+	node_map::iterator nit;
+	section_map::iterator sit = _sections_map.find(section);
+	if(sit != _sections_map.end())
+	{
+		node_map& nmap = sit->second->_nodes_map;
+		nit = nmap.find(key);
+		if(nit != nmap.end())
+		{
+			return nit->second->_value;
+		}
+	}
+	return NULL;
+}
+
+int ms_configer::get_value_int(const char* section,const char* key,int default_value)
+{
+	const char* str = get_value(section,key);
+	if(str)
+	{
+		return atoi(str);
+	}
+	return default_value;
+}
+
+const char* ms_configer::get_value_string(const char* section,const char* key,const char* default_value)
+{
+	const char* str = get_value(section,key);
+	if(str)
+	{
+		return str;
+	}
+	return default_value;
+}
+
+int ms_configer::add_node(const char* section,config_node* node)
+{
+	int result = -1;
+	section_map::iterator sit = _sections_map.find(section);
+	if(sit != _sections_map.end())
+	{
+		node_map& nmap = sit->second->_nodes_map;
+		node_map::iterator nit = nmap.find(node->_key);
+		if(nit == nmap.end())
+		{
+			nmap.insert(node_map::value_type(node->_key,node));
+			result = 0;
+		}
+		else
+		{
+			delete node;
+		}
+	}
+	else
+	{
+		delete node;
+	}
+	return result;
+}
+
+int ms_configer::add_section(config_section* section)
+{
+	_sections_map.insert(section_map::value_type(section->_section,section));
+	return 0;
+}
+ * */
+
+
+#endif /* INIREADER_H_ */

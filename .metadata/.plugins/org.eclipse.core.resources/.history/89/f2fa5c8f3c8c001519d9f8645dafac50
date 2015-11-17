@@ -1,0 +1,39 @@
+mysql_con.d mysql_con.o: ../mysql_con.c ../mysql_con.h ../db_header.h \
+ ../../commandlib/alloc.h ../../commandlib/sys_header.h \
+ ../../commandlib/my_string.h ../../commandlib/double_list.h \
+ ../../commandlib/sys_header.h ../../commandlib/atomic_lock.h \
+ ../../commandlib/my_time.h ../mysql/mysql.h ../mysql/mysql_version.h \
+ ../mysql/mysql_com.h ../mysql/mysql_time.h ../mysql/my_list.h \
+ ../mysql/typelib.h ../mysql/my_alloc.h
+
+../mysql_con.h:
+
+../db_header.h:
+
+../../commandlib/alloc.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/my_string.h:
+
+../../commandlib/double_list.h:
+
+../../commandlib/sys_header.h:
+
+../../commandlib/atomic_lock.h:
+
+../../commandlib/my_time.h:
+
+../mysql/mysql.h:
+
+../mysql/mysql_version.h:
+
+../mysql/mysql_com.h:
+
+../mysql/mysql_time.h:
+
+../mysql/my_list.h:
+
+../mysql/typelib.h:
+
+../mysql/my_alloc.h:
